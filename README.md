@@ -1,15 +1,15 @@
-#Abrasel
+# Base CNPJ — Bares, Restaurantes e Alimentação Fora do Lar
 
 Análise nacional do setor de bares, restaurantes e alimentação fora do lar, usando os dados abertos de CNPJ da Receita Federal (competência 2026-08).
 
-[**Abrir dashboard publicado**](https://christiano-gonara.github.io/teste-abrasel-dados/) · [**Ver notebook técnico**](notebooks/analise_abrasel.ipynb) · [**Baixar base tratada (Parquet)**](https://github.com/christiano-gonara/teste-abrasel-dados/releases/latest)
+[**Abrir dashboard publicado**](https://christiano-gonara.github.io/cnpj-alimentacao/) · [**Ver notebook técnico**](notebooks/analise_cnpj.ipynb) · [**Baixar base tratada (Parquet)**](https://github.com/christiano-gonara/cnpj-alimentacao/releases/latest)
 
 ## Dashboard executivo
 
 <table>
   <tr>
     <td width="50%" valign="top"><img src="assets/01-panorama.png" alt="Bloco 1 · Panorama Geral"><br><sub><b>01 · Panorama nacional</b><br>Identidade, cabeçalho e métricas iniciais.</sub></td>
-    <td width="50%" valign="top"><img src="assets/02-perguntas.png" alt="Bloco 2 · Perguntas"><br><sub><b>02 · Perguntas-chave</b><br>Cards com as respostas obrigatórias do teste.</sub></td>
+    <td width="50%" valign="top"><img src="assets/02-perguntas.png" alt="Bloco 2 · Perguntas"><br><sub><b>02 · Perguntas-chave</b><br>Cards com as respostas obrigatórias.</sub></td>
   </tr>
   <tr>
     <td width="50%" valign="top"><img src="assets/03-graficos.png" alt="Bloco 3 · Gráficos e Séries"><br><sub><b>03 · Gráficos & tendências</b><br>Série histórica de aberturas e rosca por porte.</sub></td>
@@ -21,7 +21,7 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 ![Prévia animada do dashboard](assets/dashboard-tour-atualizado.gif)
 
-## Respostas do teste
+## Perguntas respondidas
 
 | Pergunta | Resposta |
 |---|---|
@@ -32,10 +32,10 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 ## Entregáveis
 
 - [`index.html`](index.html): dashboard executivo para leitura rápida.
-- [`notebooks/analise_abrasel.ipynb`](notebooks/analise_abrasel.ipynb): análise técnica executada, com código, respostas e gráficos.
+- [`notebooks/analise_cnpj.ipynb`](notebooks/analise_cnpj.ipynb): análise técnica executada, com código, respostas e gráficos.
 - [`scripts/01_ingestao.py`](scripts/01_ingestao.py) e [`scripts/02_tratamento.py`](scripts/02_tratamento.py): ingestão, limpeza, junção e geração da base.
 - [`dados/amostra/amostra_base_afl.csv`](dados/amostra/amostra_base_afl.csv): amostra pública com 20 mil linhas.
-- [Release](https://github.com/christiano-gonara/teste-abrasel-dados/releases/latest): base nacional completa em Parquet.
+- [Release](https://github.com/christiano-gonara/cnpj-alimentacao/releases/latest): base nacional completa em Parquet.
 
 ## Decisões técnicas
 
