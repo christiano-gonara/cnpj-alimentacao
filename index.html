@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <!-- Gráficos e ícones vetoriais -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -20,7 +19,6 @@
       --bg: #F5EFEB;             /* Bege acolhedor de fundo */
       --bg-warm-card: #FAF6F0;    /* Creme suave para contraste interno */
       --card-bg: #FFFFFF;         /* Branco puro para os cards respirarem */
-      
       --text-title: #2D231E;      /* Marrom café bem escuro / alta legibilidade */
       --text-body: #5C4D44;       /* Marrom médio agradável */
       --text-muted: #8C7A70;      /* Marrom claro / cinza terroso suave */
@@ -283,11 +281,6 @@
       scroll-margin-top: 24px;
     }
 
-    
-
-    /* Telas estreitas: o título do bloco precisa caber inteiro, então encolhe e,
-       se ainda faltar espaço, quebra em duas linhas em vez de transbordar. */
-    
 
     /* Panorama: estrutura em três colunas, com luzes suaves de fundo. */
     .hero-warm {
@@ -835,7 +828,7 @@
     footer a:hover {
       text-decoration: underline;
     }
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       body {
         padding: 16px 12px;
       }
@@ -994,7 +987,9 @@
       }
     }
 
-@media (max-width: 480px) {
+    /* Telas estreitas: o título do bloco encolhe para caber inteiro e, se ainda
+       faltar espaço, quebra em duas linhas em vez de transbordar. */
+    @media (max-width: 480px) {
       .section-divider {
         margin: 14px 0 4px 0;
       }
@@ -1018,7 +1013,6 @@
 <body>
 
   <div class="container">
-    
     <!-- Topo Unificado (Identidade, Status, Navegação e Repositório) -->
     <header class="unified-header">
       <div class="header-top-row">
@@ -1162,7 +1156,6 @@
 
     <!-- Gráficos Principais -->
     <section class="dashboard-grid">
-      
       <!-- Gráfico 1: Barras de Aberturas (Mais espaçado, linhas visíveis e números sem corte) -->
       <div class="chart-card">
         <div class="chart-header">
@@ -1232,7 +1225,6 @@
 
     <!-- Tabelas Visuais: Barras mais grossas e rótulos claros -->
     <section class="bottom-grid">
-      
       <!-- Ranking por Estado -->
       <div class="chart-card">
         <div class="chart-header">
