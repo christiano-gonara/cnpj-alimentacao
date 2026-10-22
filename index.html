@@ -21,7 +21,7 @@
       --card-bg: #FFFFFF;         /* Branco puro para os cards respirarem */
       --text-title: #2D231E;      /* Marrom café bem escuro / alta legibilidade */
       --text-body: #5C4D44;       /* Marrom médio agradável */
-      --text-muted: #8C7A70;      /* Marrom claro / cinza terroso suave */
+      --text-muted: #6F5E54;      /* Marrom claro, contraste AA sobre branco */
 
       /* Acentos naturais / terracota / oliva / tangerina */
       --terracota: #E0533C;
@@ -73,7 +73,7 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 24px;
     }
 
     /* Header Unificado Moderno (estilo Neo-brutalist refinado) */
@@ -131,7 +131,7 @@
     }
 
     .brand-title p {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -158,15 +158,10 @@
       border: 1.5px solid var(--border-card);
       padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-title);
       box-shadow: 2px 2px 0 var(--border-card);
-      user-select: all;
-    }
-
-    .author-badge:hover, .contact-tag:hover {
-      background: var(--bg-warm-card);
     }
 
     .author-badge svg, .contact-tag svg {
@@ -183,7 +178,7 @@
       border: 1.5px solid #D5C9BF;
       padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--text-body);
       user-select: none;
@@ -197,57 +192,6 @@
       box-shadow: 0 0 0 3px rgba(78, 135, 82, 0.25);
     }
 
-    /* Barra inferior de navegação e atalhos de materiais integrada */
-    .header-nav-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-top: 14px;
-      border-top: 1.5px dashed #DDCFC3;
-    }
-
-    .nav-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .nav-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border: 1.5px solid var(--border-card);
-      border-radius: var(--radius-pill);
-      background: var(--bg-warm-card);
-      color: var(--text-title);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      box-shadow: 2px 2px 0 var(--border-card);
-      transition: all 0.15s ease;
-    }
-
-    .nav-tab:hover {
-      background: #FFD166;
-      transform: translateY(-1px);
-    }
-
-    .nav-tab svg {
-      width: 14px;
-      height: 14px;
-      stroke-width: 2.3;
-    }
-
-    .nav-resources {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
     .resource-btn {
       display: inline-flex;
       align-items: center;
@@ -258,16 +202,30 @@
       background: #FFFFFF;
       color: var(--text-title);
       text-decoration: none;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       box-shadow: 2px 2px 0 var(--border-card);
       transition: all 0.15s ease;
+    }
+
+    .resource-btn {
+      cursor: pointer;
     }
 
     .resource-btn:hover {
       background: var(--terracota-soft);
       border-color: var(--terracota);
       transform: translateY(-1px);
+    }
+
+    .resource-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .resource-btn:focus-visible {
+      outline: 3px solid var(--azul-petroleo);
+      outline-offset: 3px;
     }
 
     .resource-btn svg {
@@ -277,252 +235,59 @@
       color: var(--terracota);
     }
 
-    #panorama, #bloco-perguntas, #bloco-graficos, #bloco-segmentacao {
-      scroll-margin-top: 24px;
-    }
-
-
-    /* Panorama: estrutura em três colunas, com luzes suaves de fundo. */
-    .hero-warm {
-      isolation: isolate;
-      overflow: hidden;
-      background: linear-gradient(115deg, #FFF9F2 0%, #FAF3EC 52%, #F8F0E7 100%);
-      border: 2px solid var(--border-card);
-      border-radius: var(--radius-xl);
-      padding: 32px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      box-shadow: var(--shadow-brutal);
-      position: relative;
-    }
-
-    .hero-warm::before,
-    .hero-warm::after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      border-radius: 50%;
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .hero-warm::before {
-      width: 220px;
-      height: 220px;
-      right: -65px;
-      top: -110px;
-      background: rgba(240, 140, 40, 0.17);
-    }
-
-    .hero-warm::after {
-      width: 170px;
-      height: 170px;
-      left: 34%;
-      bottom: -115px;
-      background: rgba(78, 135, 82, 0.13);
-    }
-
-    .hero-top,
-    .hero-bullets {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .hero-top h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 27px;
-      font-weight: 800;
-      color: var(--text-title);
-      letter-spacing: -0.5px;
-      white-space: nowrap;
-    }
-
-    .hero-pills {
-      display: flex;
-      gap: 8px;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-
-    .hero-pill {
-      background: var(--bg-warm-card);
-      border: 1.5px solid #D5C9BF;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-body);
-      box-shadow: none;
-    }
-
-    /* Os três achados ficam na mesma linha, sem uma terceira coluna solta. */
-    .hero-bullets {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .bullet-item {
-      min-height: 104px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 15px 14px;
-      background: rgba(255, 255, 255, 0.62);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(234, 223, 215, 0.78);
-      border-radius: 18px;
-      font-size: 13px;
-      color: var(--text-body);
-      line-height: 1.45;
-    }
-
-    @media (max-width: 900px) {
-      .hero-top { align-items: flex-start; flex-direction: column; }
-      .hero-pills { justify-content: flex-start; }
-      .hero-bullets { grid-template-columns: 1fr; }
-      .hero-top h2 { white-space: normal; }
-    }
-
-    .brand-icon svg {
-      width: 25px;
-      height: 25px;
-      stroke-width: 2.4;
-    }
-
-    .hero-warm {
-      padding: 24px 28px;
-      gap: 14px;
-    }
-
-    .hero-top h2 {
-      font-size: 25px;
-    }
-
-    .hero-pills {
-      gap: 7px;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--bg-warm-card);
-      border: 1.5px solid #D5C9BF;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-body);
-      box-shadow: none;
-      user-select: none;
-    }
-
-    .hero-pill svg {
-      width: 14px;
-      height: 14px;
-      stroke-width: 2.2;
-      color: var(--text-muted);
-    }
-
-    .hero-bullets {
-      gap: 10px;
-    }
-
-    .bullet-item {
-      min-height: 0;
-      gap: 12px;
-      padding: 12px 14px;
-      font-size: 13px;
-      line-height: 1.45;
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-card);
-      border-radius: var(--radius-md);
-      box-shadow: 2px 2px 0 var(--border-card);
-    }
-
-    .bullet-icon {
-      width: 32px;
-      height: 32px;
-      display: inline-flex;
-      flex: 0 0 32px;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0;
-      color: var(--text-title);
-      background: #FFD166;
-      border: 1.5px solid var(--border-card);
-      border-radius: 10px;
-    }
-
-    .bullet-icon svg {
-      width: 17px;
-      height: 17px;
-      stroke-width: 2.3;
-    }
-
     /* KPI Cards Grid (Perguntas Principais) */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
     }
 
     .kpi-card {
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       border: 2px solid var(--border-card);
-      padding: 24px 26px;
+      padding: 24px;
       box-shadow: var(--shadow-brutal);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-      transition: transform 0.2s ease;
+      justify-content: flex-start;
+      gap: 16px;
     }
 
-    .kpi-card:hover {
-      transform: translateY(-2px);
-    }
-
+    /* Rótulo e selo empilhados: todos os cards começam do mesmo jeito (similaridade). */
     .kpi-top {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
     }
 
     .kpi-label {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
       color: var(--text-muted);
     }
 
     .pill-badge {
       padding: 5px 12px;
       border-radius: var(--radius-pill);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: -0.2px;
+      white-space: nowrap;
     }
 
-    .pill-terracota { background: var(--terracota-soft); color: var(--terracota); }
-    .pill-oliva { background: var(--oliva-soft); color: var(--oliva); }
-    .pill-tangerina { background: var(--tangerina-soft); color: var(--tangerina); }
+    .pill-terracota { background: var(--terracota-soft); color: #B93A25; }
+    .pill-oliva { background: var(--oliva-soft); color: #3A6B3E; }
+    .pill-tangerina { background: var(--tangerina-soft); color: #9A4F00; }
     .pill-azul { background: var(--azul-soft); color: var(--azul-petroleo); }
 
     .kpi-value {
       font-family: 'Outfit', sans-serif;
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 800;
       color: var(--text-title);
       letter-spacing: -1px;
@@ -531,15 +296,19 @@
     }
 
     /* Letras miúdas agora com contraste confortável */
+    .kpi-foot {
+      margin-top: auto;
+    }
+
     .kpi-detail {
-      font-size: 13.5px;
+      font-size: 15.5px;
       font-weight: 600;
       color: var(--text-body);
       line-height: 1.35;
     }
 
     .kpi-subtext {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--text-muted);
       margin-top: 2px;
     }
@@ -548,7 +317,7 @@
     .dashboard-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-      gap: 22px;
+      gap: 24px;
     }
 
     @media (max-width: 900px) {
@@ -561,11 +330,11 @@
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       border: 2px solid var(--border-card);
-      padding: 28px;
+      padding: 32px;
       box-shadow: var(--shadow-brutal);
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 24px;
       min-width: 0;
     }
 
@@ -585,7 +354,7 @@
     }
 
     .chart-title p {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text-muted);
       margin-top: 3px;
     }
@@ -593,7 +362,8 @@
     /* Container do gráfico com padding interno para os números não cortarem */
     .chart-box {
       position: relative;
-      height: 290px;
+      min-height: 290px;
+      flex: 1 1 auto;
       width: 100%;
       padding-left: 10px; /* Evita corte das centenas (100k, 200k...) */
     }
@@ -601,6 +371,7 @@
     /* Lista visual do Donut */
     .donut-wrap {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 24px;
     }
@@ -621,7 +392,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      flex: 1 1 auto;
+      width: 100%;
       min-width: 0;
     }
 
@@ -636,7 +407,7 @@
       border: 1.5px solid var(--border-card);
       padding: 11px 14px;
       border-radius: var(--radius-md);
-      font-size: 13.5px;
+      font-size: 15.5px;
       font-weight: 600;
     }
 
@@ -646,6 +417,8 @@
       gap: 10px;
       color: var(--text-title);
     }
+
+    .legend-right { white-space: nowrap; }
 
     .color-dot {
       width: 12px;
@@ -664,7 +437,7 @@
     .bottom-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 24px;
     }
 
     @media (max-width: 850px) {
@@ -673,71 +446,64 @@
       }
     }
 
-    /* Tabelas com presença visual: linhas mais altas e barras encorpadas. */
+    /* Tabelas enxutas: só linhas finas separam; a barra é o dado. */
     .custom-table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 12px;
-    }
-
-    .custom-table tr {
-      background: var(--bg-warm-card);
-      border-radius: var(--radius-md);
-      transition: background 0.15s;
-    }
-
-    .custom-table tr:hover {
-      background: #F2ECE4;
+      border-collapse: collapse;
     }
 
     .custom-table td {
-      padding: 18px 16px;
-      font-size: 13.5px;
+      padding: 16px 12px;
+      font-size: 15.5px;
       vertical-align: middle;
-      border-top: 1.5px solid var(--border-card);
-      border-bottom: 1.5px solid var(--border-card);
+      border-bottom: 1px solid #E6DBD2;
+    }
+
+    .custom-table tr:last-child td {
+      border-bottom: 0;
     }
 
     .custom-table td:first-child {
-      border-left: 1.5px solid var(--border-card);
-      border-radius: 14px 0 0 14px;
+      padding-left: 0;
       font-weight: 700;
       color: var(--text-title);
     }
 
     .custom-table td:last-child {
-      border-right: 1.5px solid var(--border-card);
-      border-radius: 0 14px 14px 0;
+      padding-right: 0;
       text-align: right;
+      white-space: nowrap;
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
       color: var(--text-title);
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .bar-track {
       width: 100%;
-      height: 18px;
-      background: var(--track-bg);
-      border-radius: var(--radius-pill);
-      overflow: hidden;
-      margin-top: 4px;
-      box-shadow: inset 0 1px 2px rgba(78, 55, 40, 0.06);
+      height: 16px;
     }
 
     .bar-fill {
       height: 100%;
-      min-width: 14px;
-      border-radius: var(--radius-pill);
-      transition: width 0.4s ease;
-      box-shadow: 0 2px 5px rgba(78, 55, 40, 0.14);
+      min-width: 8px;
+      border-radius: 4px;
+    }
+
+    .bar-fill.is-lead { background: var(--terracota); }
+    .bar-fill.is-rest { background: #CDBFB3; }
+
+    .pct {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
     }
 
     /* Section Dividers estilo lista IHC */
     .section-divider {
       display: flex;
       align-items: center;
-      margin: 22px 0 6px 0;
+      margin: 40px 0 0 0;
       position: relative;
     }
 
@@ -791,7 +557,7 @@
       border: 2px solid var(--border-card);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-brutal);
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text-muted);
     }
 
@@ -825,8 +591,18 @@
       stroke-width: 2.2;
     }
 
-    footer a:hover {
+    footer a {
       text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    footer a:hover {
+      color: #B93A25;
+    }
+
+    footer a:focus-visible {
+      outline: 3px solid var(--azul-petroleo);
+      outline-offset: 3px;
     }
     @media (max-width: 768px) {
       body {
@@ -853,7 +629,7 @@
       }
 
       .section-badge {
-        font-size: 14px;
+        font-size: 16px;
         padding: 8px 16px;
         gap: 8px;
         box-shadow: 2px 2px 0 var(--border-card);
@@ -876,54 +652,8 @@
       }
 
       .author-badge, .contact-tag, .status-tag {
-        font-size: 11.5px;
+        font-size: 13.5px;
         padding: 6px 10px;
-      }
-
-      .header-nav-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        padding-top: 12px;
-      }
-
-      .nav-tabs {
-        display: flex;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .nav-tabs::-webkit-scrollbar {
-        display: none;
-      }
-
-      .nav-tab {
-        white-space: nowrap;
-        font-size: 11.5px;
-        padding: 7px 12px;
-      }
-
-      .nav-resources {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .resource-btn {
-        justify-content: center;
-        font-size: 11px;
-        padding: 7px 8px;
-        white-space: nowrap;
-      }
-
-      .hero-warm {
-        padding: 20px 18px;
-        border-radius: var(--radius-lg);
-      }
-
-      .hero-top h2 {
-        font-size: 21px;
       }
 
       .chart-card {
@@ -949,7 +679,7 @@
 
       .donut-legend-row {
         padding: 9px 12px;
-        font-size: 12.5px;
+        font-size: 14.5px;
       }
 
       .kpi-grid {
@@ -968,7 +698,7 @@
 
       .custom-table td {
         padding: 12px 10px;
-        font-size: 12.5px;
+        font-size: 14.5px;
       }
 
       footer {
@@ -983,7 +713,7 @@
         width: 100%;
         justify-content: flex-start;
         gap: 10px;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
@@ -995,7 +725,7 @@
       }
 
       .section-badge {
-        font-size: 12.5px;
+        font-size: 14.5px;
         padding: 7px 13px;
         gap: 7px;
         letter-spacing: 0;
@@ -1013,7 +743,7 @@
 <body>
 
   <div class="container">
-    <!-- Topo Unificado (Identidade, Status, Navegação e Repositório) -->
+    <!-- Topo (Identidade, Status e Repositório) -->
     <header class="unified-header">
       <div class="header-top-row">
         <div class="brand">
@@ -1027,131 +757,130 @@
         <div class="header-actions">
           <div class="status-tag">
             <span class="dot-live"></span>
-            Base RFB Oficial — 72,8M Registros
+            Base RFB Oficial — 72,8M registros · 6 CNAEs de alimentação
           </div>
           <div class="author-contact-row">
             <div class="author-badge" title="Autor do projeto">
               <i data-lucide="user"></i>
               Christiano Gonçalves Araujo
             </div>
+            <a class="resource-btn" href="https://github.com/christiano-gonara/cnpj-alimentacao" target="_blank" rel="noopener" title="Ver repositório completo no GitHub">
+              <i data-lucide="code-xml"></i>Repositório
+            </a>
           </div>
-        </div>
-      </div>
-
-      <div class="header-nav-row">
-        <nav class="nav-tabs" aria-label="Navegação temática">
-          <a class="nav-tab" href="#panorama"><i data-lucide="sparkles"></i>Visão geral</a>
-          <a class="nav-tab" href="#bloco-perguntas"><i data-lucide="help-circle"></i>Perguntas-chave</a>
-          <a class="nav-tab" href="#bloco-graficos"><i data-lucide="bar-chart-3"></i>Gráficos & Tendências</a>
-          <a class="nav-tab" href="#bloco-segmentacao"><i data-lucide="map"></i>Estados & Atividades</a>
-        </nav>
-
-        <div class="nav-resources" aria-label="Acesso ao repositório">
-          <a class="resource-btn" href="https://github.com/christiano-gonara/cnpj-alimentacao" target="_blank" title="Ver repositório completo no GitHub">
-            <i data-lucide="code-xml"></i>Repositório
-          </a>
         </div>
       </div>
     </header>
 
-    <!-- Bloco 1: Contexto Geral -->
-    <div class="section-divider">
-      <span class="section-badge"><i data-lucide="layers"></i>Bloco 1 • Panorama Geral e Métricas</span>
-    </div>
-
-    <!-- Resumo executivo com três achados diretos. -->
-    <section class="hero-warm" id="panorama">
-      <div class="hero-top">
-        <h2>Panorama do Setor no Brasil</h2>
-        <div class="hero-pills">
-          <span class="hero-pill"><i data-lucide="database-zap"></i>Base Nacional Completa</span>
-          <span class="hero-pill"><i data-lucide="git-merge"></i>Dados unificados</span>
-          <span class="hero-pill"><i data-lucide="store"></i>6 CNAEs de Alimentação</span>
-        </div>
-      </div>
-
-      <div class="hero-bullets">
-        <div class="bullet-item">
-          <span class="bullet-icon"><i data-lucide="building-2"></i></span>
-          <div><strong>1.511.132 empresas ativas:</strong> 97,6% têm somente a matriz, sem filiais.</div>
-        </div>
-        <div class="bullet-item">
-          <span class="bullet-icon"><i data-lucide="calendar-range"></i></span>
-          <div><strong>Ritmo de abertura:</strong> pico em 2021 (356k), seguido de retomada em 2024–25 (315k).</div>
-        </div>
-        <div class="bullet-item">
-          <span class="bullet-icon"><i data-lucide="badge-percent"></i></span>
-          <div><strong>Dominância do MEI:</strong> 63,1% do setor é MEI; capital mediano de R$ 5.000.</div>
-        </div>
-      </div>
-    </section>
-
     <!-- Bloco 2: Perguntas Obrigatórias -->
-    <div class="section-divider" id="bloco-perguntas">
-      <span class="section-badge"><i data-lucide="help-circle"></i>Bloco 2 • Perguntas Respondidas</span>
+    <div class="section-divider">
+      <span class="section-badge"><i data-lucide="help-circle"></i>Bloco 1 • Perguntas Respondidas</span>
     </div>
 
     <!-- Cards Principais (Perguntas Respondidas) -->
     <section class="kpi-grid">
 
-      <!-- Ativas hoje -->
-      <div class="kpi-card" id="pergunta-1">
+      <article class="kpi-card">
         <div class="kpi-top">
           <span class="kpi-label">Ativas hoje</span>
           <span class="pill-badge pill-terracota">97,6% Matriz</span>
         </div>
         <div class="kpi-value">1,51 M</div>
-        <div>
-          <!-- Letras explicadas com cor escura e amigável para ler sem esforço -->
+        <div class="kpi-foot">
           <div class="kpi-detail">1.511.132 empresas ativas</div>
           <div class="kpi-subtext">Distribuídas em 1.543.267 lojas e pontos físicos</div>
         </div>
-      </div>
+      </article>
 
-      <!-- Últimos 5 anos -->
-      <div class="kpi-card" id="pergunta-2">
+      <article class="kpi-card">
         <div class="kpi-top">
           <span class="kpi-label">Últimos 5 anos</span>
           <span class="pill-badge pill-oliva">Pico em 2021</span>
         </div>
         <div class="kpi-value">1,5 M</div>
-        <div>
+        <div class="kpi-foot">
           <div class="kpi-detail">1.507.905 empresas abertas</div>
           <div class="kpi-subtext">Total acumulado entre 2021 e 2025</div>
         </div>
-      </div>
+      </article>
 
-      <!-- Porte predominante -->
-      <div class="kpi-card" id="pergunta-3">
+      <article class="kpi-card">
         <div class="kpi-top">
           <span class="kpi-label">Porte predominante</span>
-          <span class="pill-badge pill-tangerina">63,1% do Setor</span>
+          <span class="pill-badge pill-tangerina">63,1% do setor</span>
         </div>
         <div class="kpi-value">MEI</div>
-        <div>
+        <div class="kpi-foot">
           <div class="kpi-detail">953.769 empresas MEI</div>
           <div class="kpi-subtext">Microempresas (ME) vêm logo após com 32,2%</div>
         </div>
-      </div>
+      </article>
 
-      <!-- Capital Social -->
-      <div class="kpi-card">
+      <article class="kpi-card">
         <div class="kpi-top">
-          <span class="kpi-label">Capital Social</span>
-          <span class="pill-badge pill-azul">Porte Mínimo</span>
+          <span class="kpi-label">Capital social</span>
+          <span class="pill-badge pill-azul">Porte mínimo</span>
         </div>
         <div class="kpi-value">R$ 5.000</div>
-        <div>
+        <div class="kpi-foot">
           <div class="kpi-detail">Valor mediano declarado</div>
           <div class="kpi-subtext">90% dos negócios abrem com até R$ 60 mil</div>
         </div>
-      </div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">Pico de aberturas</span>
+          <span class="pill-badge pill-terracota">Ano de 2021</span>
+        </div>
+        <div class="kpi-value">356,8 mil</div>
+        <div class="kpi-foot">
+          <div class="kpi-detail">356.849 empresas abertas em 2021</div>
+          <div class="kpi-subtext">Maior volume anual de toda a série</div>
+        </div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">Retomada recente</span>
+          <span class="pill-badge pill-oliva">+10,7% em 2025</span>
+        </div>
+        <div class="kpi-value">315,4 mil</div>
+        <div class="kpi-foot">
+          <div class="kpi-detail">315.376 empresas abertas em 2025</div>
+          <div class="kpi-subtext">Contra 284.904 em 2024, depois do piso de 2023</div>
+        </div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">Estado líder</span>
+          <span class="pill-badge pill-azul">27,7% do setor</span>
+        </div>
+        <div class="kpi-value">SP</div>
+        <div class="kpi-foot">
+          <div class="kpi-detail">427.708 empresas ativas</div>
+          <div class="kpi-subtext">Minas Gerais vem em seguida, com 11,3%</div>
+        </div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">Negócio mais comum</span>
+          <span class="pill-badge pill-tangerina">30,6% do setor</span>
+        </div>
+        <div class="kpi-value">Lanchonetes</div>
+        <div class="kpi-foot">
+          <div class="kpi-detail">472.218 empresas ativas</div>
+          <div class="kpi-subtext">Restaurantes somam 403.467 e Delivery 380.242</div>
+        </div>
+      </article>
 
     </section>
 
     <!-- Bloco 3: Visualizações e Séries Temporais -->
-    <div class="section-divider" id="bloco-graficos">
-      <span class="section-badge"><i data-lucide="bar-chart-3"></i>Bloco 3 • Análise Gráfica e Séries</span>
+    <div class="section-divider">
+      <span class="section-badge"><i data-lucide="bar-chart-3"></i>Bloco 2 • Análise Gráfica e Séries</span>
     </div>
 
     <!-- Gráficos Principais -->
@@ -1160,10 +889,9 @@
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
-            <h3>Evolução das Aberturas — Últimos 5 Anos</h3>
-            <p>Novas empresas de alimentação abertas de 2021 a 2025</p>
+            <h3>As aberturas caíram até 2023 e voltam a crescer desde 2024</h3>
+            <p>Novas empresas de alimentação por ano, de 2021 a 2025</p>
           </div>
-          <span class="pill-badge pill-terracota">Série Histórica</span>
         </div>
         <div class="chart-box">
           <canvas id="chartAberturas"></canvas>
@@ -1174,7 +902,7 @@
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
-            <h3>Distribuição por Porte</h3>
+            <h3>Quase dois terços do setor são MEI</h3>
             <p>Classificação real comprovada pelo Simples Nacional</p>
           </div>
         </div>
@@ -1219,8 +947,8 @@
     </section>
 
     <!-- Bloco 4: Segmentação Regional e Atividades -->
-    <div class="section-divider" id="bloco-segmentacao">
-      <span class="section-badge"><i data-lucide="map"></i>Bloco 4 • Distribuição por Estado e Atividade</span>
+    <div class="section-divider">
+      <span class="section-badge"><i data-lucide="map"></i>Bloco 3 • Distribuição por Estado e Atividade</span>
     </div>
 
     <!-- Tabelas Visuais: Barras mais grossas e rótulos claros -->
@@ -1229,8 +957,8 @@
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
-            <h3>Concentração Regional (Top 5 Estados)</h3>
-            <p>Contagem ativa; barras proporcionais ao estado líder</p>
+            <h3>São Paulo sozinho tem mais empresas que MG e RJ somados</h3>
+            <p>Top 5 estados por empresas ativas; barras proporcionais ao líder</p>
           </div>
         </div>
         <table class="custom-table">
@@ -1238,46 +966,46 @@
             <td style="width: 38%;">São Paulo (SP)</td>
             <td style="width: 36%;">
               <div class="bar-track">
-                <div class="bar-fill" style="width: 100%; background: #E0533C;"></div>
+                <div class="bar-fill is-lead" style="width: 100%;"></div>
               </div>
             </td>
-            <td>427.708 <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(27,7%)</span></td>
+            <td>427.708 <span class="pct">(27,7%)</span></td>
           </tr>
           <tr>
             <td>Minas Gerais (MG)</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 40.7%; background: #F08C28;"></div>
+                <div class="bar-fill is-rest" style="width: 40.7%;"></div>
               </div>
             </td>
-            <td>174.192 <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(11,3%)</span></td>
+            <td>174.192 <span class="pct">(11,3%)</span></td>
           </tr>
           <tr>
             <td>Rio de Janeiro (RJ)</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 39.3%; background: #3B728C;"></div>
+                <div class="bar-fill is-rest" style="width: 39.3%;"></div>
               </div>
             </td>
-            <td>168.032 <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(10,9%)</span></td>
+            <td>168.032 <span class="pct">(10,9%)</span></td>
           </tr>
           <tr>
             <td>Paraná (PR)</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 22.9%; background: #4E8752;"></div>
+                <div class="bar-fill is-rest" style="width: 22.9%;"></div>
               </div>
             </td>
-            <td>97.872 <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(6,3%)</span></td>
+            <td>97.872 <span class="pct">(6,3%)</span></td>
           </tr>
           <tr>
             <td>Rio Grande do Sul (RS)</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 19%; background: #8B5E83;"></div>
+                <div class="bar-fill is-rest" style="width: 19%;"></div>
               </div>
             </td>
-            <td>81.087 <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(5,3%)</span></td>
+            <td>81.087 <span class="pct">(5,3%)</span></td>
           </tr>
         </table>
       </div>
@@ -1286,8 +1014,8 @@
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
-            <h3>Principais Tipos de Negócio</h3>
-            <p>Contagem ativa; barras proporcionais ao tipo líder</p>
+            <h3>Lanchonetes, restaurantes e delivery lideram com folga</h3>
+            <p>Empresas ativas por tipo de negócio; barras proporcionais ao líder</p>
           </div>
         </div>
         <table class="custom-table">
@@ -1295,7 +1023,7 @@
             <td style="width: 44%;">Lanchonetes e Sucos</td>
             <td style="width: 32%;">
               <div class="bar-track">
-                <div class="bar-fill" style="width: 100%; background: #E0533C;"></div>
+                <div class="bar-fill is-lead" style="width: 100%;"></div>
               </div>
             </td>
             <td>472.218</td>
@@ -1304,7 +1032,7 @@
             <td>Restaurantes</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 85.4%; background: #F08C28;"></div>
+                <div class="bar-fill is-rest" style="width: 85.4%;"></div>
               </div>
             </td>
             <td>403.467</td>
@@ -1313,7 +1041,7 @@
             <td>Delivery / Marmitas</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 80.5%; background: #4E8752;"></div>
+                <div class="bar-fill is-rest" style="width: 80.5%;"></div>
               </div>
             </td>
             <td>380.242</td>
@@ -1322,7 +1050,7 @@
             <td>Bares Tradicionais</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 25.2%; background: #DCA134;"></div>
+                <div class="bar-fill is-rest" style="width: 25.2%;"></div>
               </div>
             </td>
             <td>119.157</td>
@@ -1331,7 +1059,7 @@
             <td>Padarias com Revenda</td>
             <td>
               <div class="bar-track">
-                <div class="bar-fill" style="width: 18.4%; background: #8B5E83;"></div>
+                <div class="bar-fill is-rest" style="width: 18.4%;"></div>
               </div>
             </td>
             <td>87.081</td>
@@ -1377,17 +1105,33 @@
           ],
           borderRadius: 10,
           borderSkipped: false,
-          barThickness: 34 // Barras mais robustas e gostosas de ver
+          maxBarThickness: 56
         }]
       },
+      plugins: [{
+        // Rótulo direto sobre cada barra: dispensa eixo Y e grade.
+        id: 'valueLabels',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          const dados = chart.data.datasets[0].data;
+          ctx.save();
+          ctx.font = "700 16px 'Outfit', sans-serif";
+          ctx.fillStyle = '#2D231E';
+          ctx.textAlign = 'center';
+          chart.getDatasetMeta(0).data.forEach((barra, i) => {
+            ctx.fillText(Math.round(dados[i] / 1000) + 'k', barra.x, barra.y - 8);
+          });
+          ctx.restore();
+        }
+      }],
       options: {
         responsive: true,
         maintainAspectRatio: false,
         layout: {
           padding: {
-            left: 12,
-            right: 12,
-            top: 10,
+            left: 8,
+            right: 8,
+            top: 28,
             bottom: 0
           }
         },
@@ -1410,23 +1154,13 @@
           x: {
             grid: { display: false },
             ticks: {
-              font: { family: 'Outfit', size: 13, weight: '700' },
+              font: { family: "'Outfit', sans-serif", size: 15, weight: '700' },
               color: '#5C4D44'
             }
           },
           y: {
-            grid: {
-              color: '#EADFD7', // Linhas horizontais bem visíveis em bege/creme
-              lineWidth: 1.2
-            },
-            ticks: {
-              font: { family: 'Plus Jakarta Sans', size: 12, weight: '600' },
-              color: '#8C7A70',
-              padding: 10, // Não corta os números
-              callback: function(val) {
-                return (val / 1000) + 'k';
-              }
-            }
+            display: false,
+            beginAtZero: true
           }
         }
       }
