@@ -15,7 +15,7 @@
 
   <style>
     :root {
-      /* Paleta quente, orgânica e aconchegante (Estilo Freud / App de Bem-Estar) */
+      /* Paleta quente e orgânica, coerente com o tema de alimentação */
       --bg: #F5EFEB;             /* Bege acolhedor de fundo */
       --bg-warm-card: #FAF6F0;    /* Creme suave para contraste interno */
       --card-bg: #FFFFFF;         /* Branco puro para os cards respirarem */
@@ -38,7 +38,6 @@
       --azul-soft: #EBF3F7;
 
       --track-bg: #EAE2DA;       /* Trilho das barras em bege macio */
-      --border-card: #2D231E;    /* Borda escura: reservada ao botão principal */
       --line: #E2D6CB;           /* Filete fino dos cards e divisores */
 
       --radius-xl: 18px;
@@ -46,8 +45,7 @@
       --radius-md: 12px;
       --radius-pill: 9999px;
 
-      --shadow-brutal: 0 8px 24px -16px rgba(45, 35, 30, 0.35);
-      --shadow-soft: 0 8px 24px -16px rgba(45, 35, 30, 0.35);
+      --shadow-card: 0 8px 24px -16px rgba(45, 35, 30, 0.35);
     }
 
     html {
@@ -77,12 +75,12 @@
       gap: 24px;
     }
 
-    /* Header Unificado Moderno (estilo Neo-brutalist refinado) */
+    /* Header: card com filete fino */
     .unified-header {
       background: var(--card-bg);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-brutal);
+      box-shadow: var(--shadow-card);
       padding: 24px 32px;
       display: flex;
       flex-direction: column;
@@ -113,7 +111,6 @@
       align-items: center;
       justify-content: center;
       color: #FFFFFF;
-      box-shadow: none;
     }
 
     .brand-icon svg {
@@ -171,35 +168,30 @@
       box-shadow: 0 0 0 3px rgba(78, 135, 82, 0.25);
     }
 
+    /* Botões: formato retangular suave, sem traço grosso nem sombra deslocada. */
     .resource-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 13px;
+      gap: 8px;
+      padding: 9px 14px;
       border: 1px solid #CDBFB3;
-      border-radius: var(--radius-pill);
+      border-radius: var(--radius-md);
       background: #FFFFFF;
       color: var(--text-title);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
-      box-shadow: none;
-      transition: all 0.15s ease;
-    }
-
-    .resource-btn {
       cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .resource-btn:hover {
       background: var(--terracota-soft);
       border-color: var(--terracota);
-      transform: translateY(-1px);
     }
 
     .resource-btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: none;
+      background: #F8D9D3;
     }
 
     .resource-btn:focus-visible {
@@ -216,11 +208,9 @@
 
     /* Ação principal da página: único elemento preenchido, para chamar o clique. */
     .resource-btn.primary {
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 11px 20px;
       background: #B93A25;
-      border: 2px solid var(--border-card);
-      box-shadow: 3px 3px 0 var(--border-card);
+      border-color: #B93A25;
       color: #FFFFFF;
     }
 
@@ -228,7 +218,12 @@
 
     .resource-btn.primary:hover {
       background: #9A2E1C;
-      border-color: var(--border-card);
+      border-color: #9A2E1C;
+    }
+
+    .resource-btn.primary:active {
+      background: #832516;
+      border-color: #832516;
     }
 
     /* KPI Cards Grid (Perguntas Principais) */
@@ -243,7 +238,7 @@
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
       padding: 24px;
-      box-shadow: var(--shadow-brutal);
+      box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -327,7 +322,7 @@
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
       padding: 32px;
-      box-shadow: var(--shadow-brutal);
+      box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -570,7 +565,7 @@
       .diverge-row { grid-template-columns: minmax(104px, 40%) 1fr 56px; gap: 8px; }
     }
 
-    /* Section Dividers estilo lista IHC */
+    /* Divisores de bloco */
     .section-divider {
       display: flex;
       align-items: center;
@@ -599,7 +594,6 @@
       font-weight: 800;
       letter-spacing: -0.01em;
       color: var(--text-title);
-      box-shadow: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -700,8 +694,7 @@
         font-size: 15px;
         padding: 8px 16px;
         gap: 8px;
-        box-shadow: none;
-      }
+        }
 
       .section-badge svg {
         width: 17px;
