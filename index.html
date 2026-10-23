@@ -316,7 +316,7 @@
     /* Grid dos Gráficos */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
       gap: 24px;
     }
 
@@ -369,69 +369,14 @@
     }
 
     /* Lista visual do Donut */
-    .donut-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
 
-    @media (max-width: 500px) {
-      .donut-wrap {
-        flex-direction: column;
-      }
-    }
 
-    .donut-canvas-area {
-      width: 200px;
-      height: 200px;
-      flex-shrink: 0;
-    }
 
-    .donut-legend-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      min-width: 0;
-    }
 
-    .donut-legend-row {
-      min-height: 46px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      background: var(--bg-warm-card);
-      border: 1.5px solid var(--border-card);
-      padding: 11px 14px;
-      border-radius: var(--radius-md);
-      font-size: 14.5px;
-      font-weight: 600;
-    }
 
-    .legend-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-title);
-    }
 
-    .legend-right { white-space: nowrap; }
 
-    .color-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
 
-    .legend-right {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      color: var(--text-title);
-    }
 
     /* Tabelas e Barras Mais Grossas e Vivas */
     .bottom-grid {
@@ -671,16 +616,7 @@
         padding-left: 0;
       }
 
-      .donut-canvas-area {
-        width: 170px;
-        height: 170px;
-        margin: 0 auto;
-      }
 
-      .donut-legend-row {
-        padding: 9px 12px;
-        font-size: 13.5px;
-      }
 
       .kpi-grid {
         grid-template-columns: 1fr;
@@ -894,7 +830,7 @@
 
     <!-- Gráficos Principais -->
     <section class="dashboard-grid">
-      <!-- Gráfico 1: Barras de Aberturas (Mais espaçado, linhas visíveis e números sem corte) -->
+      <!-- Gráfico 1: Linha de aberturas, tempo da esquerda para a direita -->
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
@@ -907,50 +843,37 @@
         </div>
       </div>
 
-      <!-- Gráfico 2: Donut de Porte -->
+      <!-- Gráfico 2: Porte em barras horizontais -->
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
             <h3>Quase dois terços do setor são MEI</h3>
-            <p>Classificação real comprovada pelo Simples Nacional</p>
+            <p>Empresas ativas por porte, pelo Simples Nacional; barras proporcionais ao líder</p>
           </div>
         </div>
 
-        <div class="donut-wrap">
-          <div class="donut-canvas-area">
-            <canvas id="chartPorte"></canvas>
-          </div>
-          <div class="donut-legend-list">
-            <div class="donut-legend-row">
-              <div class="legend-left">
-                <span class="color-dot" style="background: #E0533C;"></span>
-                <span>MEI</span>
-              </div>
-              <span class="legend-right">63,1% (953k)</span>
-            </div>
-            <div class="donut-legend-row">
-              <div class="legend-left">
-                <span class="color-dot" style="background: #3B728C;"></span>
-                <span>Microempresa (ME)</span>
-              </div>
-              <span class="legend-right">32,2% (486k)</span>
-            </div>
-            <div class="donut-legend-row">
-              <div class="legend-left">
-                <span class="color-dot" style="background: #4E8752;"></span>
-                <span>Pequeno Porte (EPP)</span>
-              </div>
-              <span class="legend-right">3,9% (59k)</span>
-            </div>
-            <div class="donut-legend-row">
-              <div class="legend-left">
-                <span class="color-dot" style="background: #D5C9BF;"></span>
-                <span>Demais Portes</span>
-              </div>
-              <span class="legend-right">0,7% (11k)</span>
-            </div>
-          </div>
-        </div>
+        <table class="custom-table">
+          <tr>
+            <td style="width: 38%;">MEI</td>
+            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-lead" style="width: 100%;"></div></div></td>
+            <td>63,1% <span class="pct">(953k)</span></td>
+          </tr>
+          <tr>
+            <td style="width: 38%;">Microempresa (ME)</td>
+            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 51%;"></div></div></td>
+            <td>32,2% <span class="pct">(486k)</span></td>
+          </tr>
+          <tr>
+            <td style="width: 38%;">Pequeno Porte (EPP)</td>
+            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 6.2%;"></div></div></td>
+            <td>3,9% <span class="pct">(59k)</span></td>
+          </tr>
+          <tr>
+            <td style="width: 38%;">Demais portes</td>
+            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 1.1%;"></div></div></td>
+            <td>0,7% <span class="pct">(11k)</span></td>
+          </tr>
+        </table>
       </div>
 
     </section>
@@ -1096,39 +1019,41 @@
       lucide.createIcons({ attrs: { 'stroke-width': 2.25 } });
     }
 
-    // 1. Gráfico de Aberturas
-    const ctxAberturas = document.getElementById('chartAberturas').getContext('2d');
-    new Chart(ctxAberturas, {
-      type: 'bar',
+    // Gráfico de linha: o tempo corre da esquerda para a direita.
+    const anos = ['2021', '2022', '2023', '2024', '2025'];
+    const aberturas = [356849, 282586, 268190, 284904, 315376];
+    const corPonto = ['#E0533C', '#8C7A70', '#8C7A70', '#8C7A70', '#3B728C'];
+
+    new Chart(document.getElementById('chartAberturas').getContext('2d'), {
+      type: 'line',
       data: {
-        labels: ['2021', '2022', '2023', '2024', '2025'],
+        labels: anos,
         datasets: [{
           label: 'Novas Empresas',
-          data: [356849, 282586, 268190, 284904, 315376],
-          backgroundColor: [
-            '#E0533C', // 2021, pico da série
-            '#D5C9BF', // 2022
-            '#D5C9BF', // 2023
-            '#9ABECF', // 2024
-            '#3B728C'  // 2025, retomada
-          ],
-          borderRadius: 10,
-          borderSkipped: false,
-          maxBarThickness: 56
+          data: aberturas,
+          borderColor: '#8C7A70',
+          borderWidth: 2.5,
+          tension: 0,
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          pointBackgroundColor: corPonto,
+          pointBorderColor: '#FFFFFF',
+          pointBorderWidth: 2
         }]
       },
       plugins: [{
-        // Rótulo direto sobre cada barra: dispensa eixo Y e grade.
+        // Rótulo direto em cada ponto: dispensa eixo Y e grade.
         id: 'valueLabels',
         afterDatasetsDraw(chart) {
           const { ctx } = chart;
-          const dados = chart.data.datasets[0].data;
           ctx.save();
           ctx.font = "700 15px 'Outfit', sans-serif";
-          ctx.fillStyle = '#2D231E';
           ctx.textAlign = 'center';
-          chart.getDatasetMeta(0).data.forEach((barra, i) => {
-            ctx.fillText(Math.round(dados[i] / 1000) + 'k', barra.x, barra.y - 8);
+          chart.getDatasetMeta(0).data.forEach((ponto, i) => {
+            ctx.fillStyle = (i === 0 || i === aberturas.length - 1) ? corPonto[i] : '#2D231E';
+            // Nos vales o rótulo vai abaixo do ponto, longe da linha.
+            const abaixo = i === 1 || i === 2;
+            ctx.fillText(Math.round(aberturas[i] / 1000) + 'k', ponto.x, ponto.y + (abaixo ? 28 : -16));
           });
           ctx.restore();
         }
@@ -1136,75 +1061,28 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        layout: {
-          padding: {
-            left: 8,
-            right: 8,
-            top: 28,
-            bottom: 0
-          }
-        },
+        layout: { padding: { left: 16, right: 16, top: 32, bottom: 0 } },
         plugins: {
           legend: { display: false },
           tooltip: {
             backgroundColor: '#2D231E',
             padding: 12,
-            titleFont: { family: 'Plus Jakarta Sans', size: 13, weight: 'bold' },
-            bodyFont: { family: 'Plus Jakarta Sans', size: 13 },
+            titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: 'bold' },
+            bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
             displayColors: false,
             callbacks: {
-              label: function(ctx) {
-                return new Intl.NumberFormat('pt-BR').format(ctx.parsed.y) + ' novas empresas abertas';
-              }
+              label: ctx => new Intl.NumberFormat('pt-BR').format(ctx.parsed.y) + ' novas empresas abertas'
             }
           }
         },
         scales: {
           x: {
+            offset: true,
             grid: { display: false },
-            ticks: {
-              font: { family: "'Outfit', sans-serif", size: 14, weight: '700' },
-              color: '#5C4D44'
-            }
+            border: { color: '#E6DBD2' },
+            ticks: { font: { family: "'Outfit', sans-serif", size: 15, weight: '700' }, color: '#5C4D44' }
           },
-          y: {
-            display: false,
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    // 2. Gráfico Donut de Porte
-    const ctxPorte = document.getElementById('chartPorte').getContext('2d');
-    new Chart(ctxPorte, {
-      type: 'doughnut',
-      data: {
-        labels: ['MEI', 'Microempresa (ME)', 'Pequeno Porte (EPP)', 'Demais'],
-        datasets: [{
-          data: [63.1, 32.2, 3.9, 0.7],
-          backgroundColor: ['#E0533C', '#3B728C', '#4E8752', '#D5C9BF'],
-          borderWidth: 5,
-          borderColor: '#FFFFFF',
-          hoverOffset: 4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '56%',
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: '#2D231E',
-            padding: 10,
-            displayColors: true,
-            callbacks: {
-              label: function(ctx) {
-                return ' ' + ctx.label + ': ' + ctx.parsed + '%';
-              }
-            }
-          }
+          y: { display: false, min: 220000, max: 380000 }
         }
       }
     });
