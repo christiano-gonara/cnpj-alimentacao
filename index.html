@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Base CNPJ — Bares, Restaurantes e Alimentação Fora do Lar</title>
 
-  <!-- Fontes acolhedoras e modernas: Plus Jakarta Sans & Outfit -->
+  <!-- Fontes: Fraunces (serifada quente, títulos e números) + Plus Jakarta Sans (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Gráficos e ícones vetoriais -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -60,6 +60,7 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
+      font-variant-numeric: tabular-nums;
       background-color: var(--bg);
       color: var(--text-body);
       padding: 36px 20px;
@@ -120,11 +121,11 @@
     }
 
     .brand-title h1 {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 27px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text-title);
-      letter-spacing: -0.4px;
+      letter-spacing: -0.01em;
       line-height: 1.15;
     }
 
@@ -226,14 +227,51 @@
       border-color: #832516;
     }
 
-    /* KPI Cards Grid (Perguntas Principais) */
-    .kpi-grid {
+    /* Bento: um bloco grande para o número principal e blocos menores ao redor. */
+    .bento {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
     }
 
+    .bento.hero-left {
+      grid-template-areas:
+        "hero hero a b"
+        "hero hero c c";
+    }
+
+    .bento.hero-right {
+      grid-template-areas:
+        "a b hero hero"
+        "c c hero hero";
+    }
+
+    .bento .hero { grid-area: hero; }
+    .bento .area-a { grid-area: a; }
+    .bento .area-b { grid-area: b; }
+    .bento .area-c { grid-area: c; }
+
+    @media (max-width: 900px) {
+      .bento.hero-left,
+      .bento.hero-right {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "hero hero"
+          "a b"
+          "c c";
+      }
+    }
+
+    @media (max-width: 560px) {
+      .bento.hero-left,
+      .bento.hero-right {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "hero" "a" "b" "c";
+      }
+    }
+
     .kpi-card {
+      min-width: 0;
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
@@ -271,17 +309,17 @@
       white-space: nowrap;
     }
 
+    /* Cor só com significado: terracota = destaque/pico, azul = crescimento, o resto neutro. */
+    .pill-neutral { background: #F3ECE5; color: var(--text-body); }
     .pill-terracota { background: var(--terracota-soft); color: #B93A25; }
-    .pill-oliva { background: var(--oliva-soft); color: #3A6B3E; }
-    .pill-tangerina { background: var(--tangerina-soft); color: #9A4F00; }
     .pill-azul { background: var(--azul-soft); color: var(--azul-petroleo); }
 
     .kpi-value {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 35px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text-title);
-      letter-spacing: -1px;
+      letter-spacing: -0.02em;
       line-height: 1;
       margin: 4px 0 2px 0;
     }
@@ -302,6 +340,66 @@
       font-size: 13px;
       color: var(--text-muted);
       margin-top: 2px;
+    }
+
+    /* Bloco grande do bento */
+    .kpi-card.hero {
+      padding: 32px;
+      gap: 20px;
+      background: #FFF5EB;
+      border-color: #EBD7C3;
+    }
+
+    .kpi-card.hero .kpi-value { font-size: 88px; }
+    .kpi-card.hero .kpi-detail { font-size: 18px; }
+    .kpi-card.hero .kpi-subtext { font-size: 15px; }
+
+    .hero-extra {
+      margin-top: 8px;
+      padding-top: 20px;
+      border-top: 1px solid #EBD7C3;
+    }
+
+    .hero-split {
+      display: flex;
+      height: 14px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-split span:first-child { background: var(--terracota); }
+    .hero-split span:last-child { background: #DCD0C5; }
+
+    .hero-split-key {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-facts dt {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--text-muted);
+    }
+
+    .hero-facts dd {
+      margin-top: 4px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-title);
     }
 
     /* Grid dos Gráficos */
@@ -337,11 +435,12 @@
     }
 
     .chart-title h3 {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 18px;
       font-weight: 700;
       color: var(--text-title);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
     }
 
     .chart-title p {
@@ -413,8 +512,8 @@
       padding-right: 0;
       text-align: right;
       white-space: nowrap;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
       color: var(--text-title);
       font-size: 15px;
     }
@@ -460,8 +559,8 @@
       align-items: center;
       justify-content: center;
       color: #FFFFFF;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
       font-size: 19px;
       border-right: 2px solid #FFFFFF;
     }
@@ -552,9 +651,9 @@
 
     .diverge-val {
       text-align: right;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text-title);
     }
 
@@ -591,7 +690,7 @@
       padding: 10px 24px;
       border-radius: var(--radius-pill);
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--text-title);
       display: inline-flex;
@@ -626,9 +725,9 @@
     footer p { margin-top: 4px; }
 
     .footer-brand strong {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text-title);
     }
 
@@ -718,9 +817,16 @@
 
 
 
-      .kpi-grid {
-        grid-template-columns: 1fr;
+      .bento {
         gap: 14px;
+      }
+
+      .kpi-card.hero {
+        padding: 24px 20px;
+      }
+
+      .kpi-card.hero .kpi-value {
+        font-size: 60px;
       }
 
       .kpi-card {
@@ -803,36 +909,40 @@
     </div>
 
     <!-- Cards: perfil do setor -->
-    <section class="kpi-grid">
+    <section class="bento hero-left">
 
-      <article class="kpi-card">
+      <article class="kpi-card hero">
         <div class="kpi-top">
           <span class="kpi-label">Ativas hoje</span>
-          <span class="pill-badge pill-terracota">97,6% Matriz</span>
+          <span class="pill-badge pill-neutral">97,6% matriz</span>
         </div>
         <div class="kpi-value">1,51 M</div>
         <div class="kpi-foot">
           <div class="kpi-detail">1.511.132 empresas ativas</div>
           <div class="kpi-subtext">Distribuídas em 1.543.267 lojas e pontos físicos</div>
         </div>
+        <div class="hero-extra">
+          <div class="hero-split" role="img" aria-label="97,6% só matriz, 2,4% com filiais"><span style="width: 97.6%;"></span><span style="width: 2.4%;"></span></div>
+          <div class="hero-split-key"><span>97,6% só matriz</span><span>2,4% com filiais</span></div>
+        </div>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-a">
         <div class="kpi-top">
           <span class="kpi-label">Porte predominante</span>
-          <span class="pill-badge pill-tangerina">63,1% do setor</span>
+          <span class="pill-badge pill-neutral">63,1% do setor</span>
         </div>
         <div class="kpi-value">MEI</div>
         <div class="kpi-foot">
           <div class="kpi-detail">953.769 empresas MEI</div>
-          <div class="kpi-subtext">Microempresas (ME) vêm logo após com 32,2%</div>
+          <div class="kpi-subtext">Microempresas (ME) vêm logo após, com 32,2%</div>
         </div>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-b">
         <div class="kpi-top">
           <span class="kpi-label">Estado líder</span>
-          <span class="pill-badge pill-azul">27,7% do setor</span>
+          <span class="pill-badge pill-neutral">27,7% do setor</span>
         </div>
         <div class="kpi-value">SP</div>
         <div class="kpi-foot">
@@ -841,10 +951,10 @@
         </div>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-c">
         <div class="kpi-top">
           <span class="kpi-label">Negócio mais comum</span>
-          <span class="pill-badge pill-tangerina">30,6% do setor</span>
+          <span class="pill-badge pill-neutral">30,6% do setor</span>
         </div>
         <div class="kpi-value">Lanchonetes</div>
         <div class="kpi-foot">
@@ -860,21 +970,25 @@
       <span class="section-badge"><i data-lucide="calendar-range"></i>Bloco 2 • Ritmo de Abertura e Capital</span>
     </div>
 
-    <section class="kpi-grid">
+    <section class="bento hero-right">
 
-      <article class="kpi-card">
+      <article class="kpi-card hero">
         <div class="kpi-top">
           <span class="kpi-label">Últimos 5 anos</span>
-          <span class="pill-badge pill-oliva">Pico em 2021</span>
+          <span class="pill-badge pill-neutral">Total 2021–2025</span>
         </div>
         <div class="kpi-value">1,5 M</div>
         <div class="kpi-foot">
           <div class="kpi-detail">1.507.905 empresas abertas</div>
-          <div class="kpi-subtext">Total acumulado entre 2021 e 2025</div>
+          <div class="kpi-subtext">Soma das aberturas entre 2021 e 2025</div>
         </div>
+        <dl class="hero-extra hero-facts">
+          <div><dt>Média por ano</dt><dd>301,6 mil</dd></div>
+          <div><dt>Piso da série</dt><dd>2023 · 268 mil</dd></div>
+        </dl>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-a">
         <div class="kpi-top">
           <span class="kpi-label">Pico de aberturas</span>
           <span class="pill-badge pill-terracota">Ano de 2021</span>
@@ -886,10 +1000,10 @@
         </div>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-b">
         <div class="kpi-top">
           <span class="kpi-label">Retomada recente</span>
-          <span class="pill-badge pill-oliva">+10,7% em 2025</span>
+          <span class="pill-badge pill-azul">+10,7% em 2025</span>
         </div>
         <div class="kpi-value">315,4 mil</div>
         <div class="kpi-foot">
@@ -898,10 +1012,10 @@
         </div>
       </article>
 
-      <article class="kpi-card">
+      <article class="kpi-card area-c">
         <div class="kpi-top">
           <span class="kpi-label">Capital social</span>
-          <span class="pill-badge pill-azul">Porte mínimo</span>
+          <span class="pill-badge pill-neutral">Porte mínimo</span>
         </div>
         <div class="kpi-value">R$ 5.000</div>
         <div class="kpi-foot">
@@ -944,15 +1058,15 @@
         <div class="split">
           <div class="split-bar" role="img" aria-label="MEI 63,1%, Microempresa 32,2%, Pequeno Porte 3,9%, Demais portes 0,7%">
             <div class="split-seg" style="width: 63.1%; background: #E0533C;">63,1%</div>
-            <div class="split-seg" style="width: 32.2%; background: #3B728C;">32,2%</div>
-            <div class="split-seg" style="width: 3.9%; background: #9ABECF;"></div>
-            <div class="split-seg" style="width: 0.7%; background: #CDBFB3;"></div>
+            <div class="split-seg" style="width: 32.2%; background: #7A685E;">32,2%</div>
+            <div class="split-seg" style="width: 3.9%; background: #B5A79B;"></div>
+            <div class="split-seg" style="width: 0.7%; background: #DCD0C5;"></div>
           </div>
           <div class="split-key">
             <div class="split-key-item"><span class="swatch" style="background: #E0533C;"></span><div><strong>MEI</strong><span class="pct">953 mil · 63,1%</span></div></div>
-            <div class="split-key-item"><span class="swatch" style="background: #3B728C;"></span><div><strong>Microempresa (ME)</strong><span class="pct">486 mil · 32,2%</span></div></div>
-            <div class="split-key-item"><span class="swatch" style="background: #9ABECF;"></span><div><strong>Pequeno Porte (EPP)</strong><span class="pct">59 mil · 3,9%</span></div></div>
-            <div class="split-key-item"><span class="swatch" style="background: #CDBFB3;"></span><div><strong>Demais portes</strong><span class="pct">11 mil · 0,7%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #7A685E;"></span><div><strong>Microempresa (ME)</strong><span class="pct">486 mil · 32,2%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #B5A79B;"></span><div><strong>Pequeno Porte (EPP)</strong><span class="pct">59 mil · 3,9%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #DCD0C5;"></span><div><strong>Demais portes</strong><span class="pct">11 mil · 0,7%</span></div></div>
           </div>
         </div>
       </div>
@@ -1131,7 +1245,7 @@
         afterDatasetsDraw(chart) {
           const { ctx } = chart;
           ctx.save();
-          ctx.font = "700 15px 'Outfit', sans-serif";
+          ctx.font = "700 15px 'Fraunces', Georgia, serif";
           ctx.textAlign = 'center';
           chart.getDatasetMeta(0).data.forEach((ponto, i) => {
             ctx.fillStyle = (i === 0 || i === aberturas.length - 1) ? corPonto[i] : '#2D231E';
@@ -1164,7 +1278,7 @@
             offset: true,
             grid: { display: false },
             border: { color: '#E6DBD2' },
-            ticks: { font: { family: "'Outfit', sans-serif", size: 15, weight: '700' }, color: '#5C4D44' }
+            ticks: { font: { family: "'Fraunces', Georgia, serif", size: 15, weight: '700' }, color: '#5C4D44' }
           },
           y: { display: false, min: 220000, max: 380000 }
         }
