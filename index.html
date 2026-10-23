@@ -397,6 +397,10 @@
       border-collapse: collapse;
     }
 
+    .chart-card > .custom-table {
+      flex: 1 1 auto;
+    }
+
     .custom-table td {
       padding: 16px 12px;
       font-size: 14.5px;
@@ -442,6 +446,132 @@
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
+    }
+
+    /* Barra dividida (porte): uma só barra, lida da esquerda para a direita. */
+    .split {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: auto 0;
+    }
+
+    .split-bar {
+      display: flex;
+      height: 64px;
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .split-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 19px;
+      border-right: 2px solid #FFFFFF;
+    }
+
+    .split-seg:last-child { border-right: 0; }
+
+    .split-key {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .split-key-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-title);
+      font-size: 15px;
+    }
+
+    .split-key-item strong { display: block; }
+
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    /* Barras divergentes (variação %): esquerda cai, direita sobe. */
+    .diverge-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 36%) 1fr 64px;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #E6DBD2;
+    }
+
+    .diverge-row:last-child { border-bottom: 0; }
+
+    .diverge-axis {
+      padding: 0 0 4px 0;
+      border-bottom: 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .diverge-hint {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .diverge-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-title);
+      line-height: 1.3;
+    }
+
+    .diverge-name .pct { display: block; }
+
+    .diverge-track {
+      position: relative;
+      height: 16px;
+    }
+
+    .diverge-track::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -14px;
+      bottom: -14px;
+      border-left: 2px solid var(--text-title);
+    }
+
+    .diverge-bar {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    .diverge-bar.pos { left: 50%; background: var(--azul-petroleo); }
+    .diverge-bar.neg { right: 50%; background: #CDBFB3; }
+
+    .diverge-val {
+      text-align: right;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-title);
+    }
+
+    .diverge-val.pos { color: var(--azul-petroleo); }
+
+    @media (max-width: 500px) {
+      .split-key { grid-template-columns: 1fr; }
+      .diverge-row { grid-template-columns: minmax(104px, 40%) 1fr 56px; gap: 8px; }
     }
 
     /* Section Dividers estilo lista IHC */
@@ -848,32 +978,24 @@
         <div class="chart-header">
           <div class="chart-title">
             <h3>Quase dois terços do setor são MEI</h3>
-            <p>Empresas ativas por porte, pelo Simples Nacional; barras proporcionais ao líder</p>
+            <p>Cada segmento é a fatia de empresas ativas do porte, pelo Simples Nacional</p>
           </div>
         </div>
 
-        <table class="custom-table">
-          <tr>
-            <td style="width: 38%;">MEI</td>
-            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-lead" style="width: 100%;"></div></div></td>
-            <td>63,1% <span class="pct">(953k)</span></td>
-          </tr>
-          <tr>
-            <td style="width: 38%;">Microempresa (ME)</td>
-            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 51%;"></div></div></td>
-            <td>32,2% <span class="pct">(486k)</span></td>
-          </tr>
-          <tr>
-            <td style="width: 38%;">Pequeno Porte (EPP)</td>
-            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 6.2%;"></div></div></td>
-            <td>3,9% <span class="pct">(59k)</span></td>
-          </tr>
-          <tr>
-            <td style="width: 38%;">Demais portes</td>
-            <td style="width: 32%;"><div class="bar-track"><div class="bar-fill is-rest" style="width: 1.1%;"></div></div></td>
-            <td>0,7% <span class="pct">(11k)</span></td>
-          </tr>
-        </table>
+        <div class="split">
+          <div class="split-bar" role="img" aria-label="MEI 63,1%, Microempresa 32,2%, Pequeno Porte 3,9%, Demais portes 0,7%">
+            <div class="split-seg" style="width: 63.1%; background: #E0533C;">63,1%</div>
+            <div class="split-seg" style="width: 32.2%; background: #3B728C;">32,2%</div>
+            <div class="split-seg" style="width: 3.9%; background: #9ABECF;"></div>
+            <div class="split-seg" style="width: 0.7%; background: #CDBFB3;"></div>
+          </div>
+          <div class="split-key">
+            <div class="split-key-item"><span class="swatch" style="background: #E0533C;"></span><div><strong>MEI</strong><span class="pct">953 mil · 63,1%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #3B728C;"></span><div><strong>Microempresa (ME)</strong><span class="pct">486 mil · 32,2%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #9ABECF;"></span><div><strong>Pequeno Porte (EPP)</strong><span class="pct">59 mil · 3,9%</span></div></div>
+            <div class="split-key-item"><span class="swatch" style="background: #CDBFB3;"></span><div><strong>Demais portes</strong><span class="pct">11 mil · 0,7%</span></div></div>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -889,57 +1011,53 @@
       <div class="chart-card">
         <div class="chart-header">
           <div class="chart-title">
-            <h3>São Paulo sozinho tem mais empresas que MG e RJ somados</h3>
-            <p>Top 5 estados por empresas ativas; barras proporcionais ao líder</p>
+            <h3>Entre os 8 maiores estados, só GO e SC abriram mais negócios em 2025 do que em 2021</h3>
+            <p>Variação das aberturas de 2021 para 2025, nos 8 estados com mais aberturas em 2025</p>
           </div>
         </div>
-        <table class="custom-table">
-          <tr>
-            <td style="width: 38%;">São Paulo (SP)</td>
-            <td style="width: 36%;">
-              <div class="bar-track">
-                <div class="bar-fill is-lead" style="width: 100%;"></div>
-              </div>
-            </td>
-            <td>427.708 <span class="pct">(27,7%)</span></td>
-          </tr>
-          <tr>
-            <td>Minas Gerais (MG)</td>
-            <td>
-              <div class="bar-track">
-                <div class="bar-fill is-rest" style="width: 40.7%;"></div>
-              </div>
-            </td>
-            <td>174.192 <span class="pct">(11,3%)</span></td>
-          </tr>
-          <tr>
-            <td>Rio de Janeiro (RJ)</td>
-            <td>
-              <div class="bar-track">
-                <div class="bar-fill is-rest" style="width: 39.3%;"></div>
-              </div>
-            </td>
-            <td>168.032 <span class="pct">(10,9%)</span></td>
-          </tr>
-          <tr>
-            <td>Paraná (PR)</td>
-            <td>
-              <div class="bar-track">
-                <div class="bar-fill is-rest" style="width: 22.9%;"></div>
-              </div>
-            </td>
-            <td>97.872 <span class="pct">(6,3%)</span></td>
-          </tr>
-          <tr>
-            <td>Rio Grande do Sul (RS)</td>
-            <td>
-              <div class="bar-track">
-                <div class="bar-fill is-rest" style="width: 19%;"></div>
-              </div>
-            </td>
-            <td>81.087 <span class="pct">(5,3%)</span></td>
-          </tr>
-        </table>
+        <div class="diverge">
+          <div class="diverge-row diverge-axis"><span></span><div class="diverge-hint"><span>← caiu</span><span>subiu →</span></div><span></span></div>
+          <div class="diverge-row">
+            <div class="diverge-name">Goiás (GO)<span class="pct">12,6k → 14,9k</span></div>
+            <div class="diverge-track"><div class="diverge-bar pos" style="width: 43.5%;"></div></div>
+            <div class="diverge-val pos">+18,3%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Santa Catarina (SC)<span class="pct">14,5k → 15,7k</span></div>
+            <div class="diverge-track"><div class="diverge-bar pos" style="width: 19.7%;"></div></div>
+            <div class="diverge-val pos">+8,3%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Paraná (PR)<span class="pct">19,7k → 18,7k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 11.5%;"></div></div>
+            <div class="diverge-val neg">−4,8%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Minas Gerais (MG)<span class="pct">38,1k → 35,1k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 19.1%;"></div></div>
+            <div class="diverge-val neg">−8,0%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Rio Grande do Sul (RS)<span class="pct">17,8k → 16,3k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 19.9%;"></div></div>
+            <div class="diverge-val neg">−8,4%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">São Paulo (SP)<span class="pct">96,5k → 83,7k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 31.7%;"></div></div>
+            <div class="diverge-val neg">−13,3%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Bahia (BA)<span class="pct">17,8k → 14,4k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 46.3%;"></div></div>
+            <div class="diverge-val neg">−19,5%</div>
+          </div>
+          <div class="diverge-row">
+            <div class="diverge-name">Rio de Janeiro (RJ)<span class="pct">43,2k → 34,6k</span></div>
+            <div class="diverge-track"><div class="diverge-bar neg" style="width: 47.2%;"></div></div>
+            <div class="diverge-val neg">−19,8%</div>
+          </div>
+        </div>
       </div>
 
       <!-- Ranking por Atividade Econômica -->
