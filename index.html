@@ -349,35 +349,39 @@
       overflow: hidden;
       padding: 32px;
       gap: 20px;
-      background:
-        radial-gradient(circle at 92% 8%, rgba(240, 140, 40, 0.20), transparent 55%),
-        #FFF5EB;
+      background: #FFF5EB;
       border-color: #EBD7C3;
     }
 
-    /* Ilustração de fundo: bem apagada, no canto sem texto, para não atrapalhar a leitura. */
-    .hero-bg {
+    /* Foto de fundo: tom quente e véu cremoso que cresce para o lado do texto. */
+    .hero-photo {
       position: absolute;
+      inset: 0;
       z-index: -1;
-      top: -36px;
-      right: -36px;
-      width: 300px;
-      height: 300px;
-      color: var(--terracota);
-      opacity: 0.08;
-      transform: rotate(-12deg);
       pointer-events: none;
     }
 
-    .hero-bg svg {
-      width: 100%;
-      height: 100%;
-      stroke-width: 1.1;
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--foto) var(--foto-pos, center) / cover no-repeat;
+      filter: sepia(0.35) saturate(1.1);
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg,
+        rgba(255, 245, 235, 0.97) 0%,
+        rgba(255, 245, 235, 0.92) 45%,
+        rgba(255, 245, 235, 0.68) 100%);
     }
 
     .kpi-card.hero .kpi-value { font-size: 88px; }
     .kpi-card.hero .kpi-detail { font-size: 18px; }
-    .kpi-card.hero .kpi-subtext { font-size: 15px; }
+    .kpi-card.hero .kpi-subtext { font-size: 15px; color: var(--text-body); }
 
     .hero-extra {
       margin-top: 8px;
@@ -854,10 +858,6 @@
         font-size: 60px;
       }
 
-      .hero-bg {
-        width: 220px;
-        height: 220px;
-      }
 
       .kpi-card {
         padding: 18px 20px;
@@ -942,7 +942,7 @@
     <section class="bento hero-left">
 
       <article class="kpi-card hero">
-        <span class="hero-bg" aria-hidden="true"><i data-lucide="store"></i></span>
+        <div class="hero-photo" style="--foto: url('assets/foto-cozinha.jpg'); --foto-pos: 70% center;" aria-hidden="true"></div>
         <div class="kpi-top">
           <span class="kpi-label">Ativas hoje</span>
           <span class="pill-badge pill-neutral">97,6% matriz</span>
@@ -1004,7 +1004,7 @@
     <section class="bento hero-right">
 
       <article class="kpi-card hero">
-        <span class="hero-bg" aria-hidden="true"><i data-lucide="chef-hat"></i></span>
+        <div class="hero-photo" style="--foto: url('assets/foto-feira.jpg'); --foto-pos: 60% center;" aria-hidden="true"></div>
         <div class="kpi-top">
           <span class="kpi-label">Últimos 5 anos</span>
           <span class="pill-badge pill-neutral">Total 2021–2025</span>
@@ -1234,6 +1234,7 @@
         <span class="footer-label">Autoria e dados</span>
         <p class="footer-name">Christiano Gonçalves Araujo</p>
         <p>Base pública da Receita Federal, processada com DuckDB e Parquet</p>
+        <p>Fotos: Unsplash, via Wikimedia Commons (CC0)</p>
       </div>
       <div class="footer-links">
         <a class="resource-btn" href="https://github.com/christiano-gonara/cnpj-alimentacao" target="_blank" rel="noopener"><i data-lucide="code-xml"></i>Repositório no GitHub</a>
