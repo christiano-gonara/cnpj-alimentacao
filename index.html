@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alimentação Fora do Lar no Brasil — Panorama CNPJ</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="description" content="Bares, restaurantes e alimentação fora do lar no Brasil, a partir dos dados abertos de CNPJ da Receita Federal.">
 
   <!-- Fontes: Funnel Display (títulos e números) + Figtree (texto) -->
@@ -76,25 +77,38 @@
       line-height: 1.02;
     }
 
-    /* ---------- Navegação: pílula flutuante, só âncoras da página ---------- */
+    /* ---------- Navegação: plana no topo, vira pílula translúcida ao rolar ---------- */
     .nav {
       position: sticky;
-      top: 14px;
+      top: 0;
       z-index: 50;
-      margin: 14px auto 0;
-      max-width: 1112px;
-      width: calc(100% - 32px);
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1160px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 10px 12px 10px 14px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: saturate(1.4) blur(14px);
-      -webkit-backdrop-filter: saturate(1.4) blur(14px);
-      border: 1px solid var(--line);
+      padding: 18px 24px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 0;
+      transition: top 0.5s var(--ease), max-width 0.5s var(--ease), width 0.5s var(--ease),
+        padding 0.5s var(--ease), background 0.4s ease, border-color 0.4s ease,
+        border-radius 0.5s var(--ease), box-shadow 0.4s ease;
+    }
+
+    .nav.is-scrolled {
+      top: 12px;
+      width: calc(100% - 32px);
+      max-width: 1080px;
+      padding: 10px 12px 10px 16px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: saturate(1.8) blur(18px);
+      -webkit-backdrop-filter: saturate(1.8) blur(18px);
+      border-color: rgba(214, 211, 201, 0.7);
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
+      box-shadow: 0 1px 2px rgba(22, 32, 26, 0.04), 0 16px 36px -22px rgba(22, 32, 26, 0.35);
     }
 
     .brand {
@@ -105,18 +119,7 @@
       min-width: 0;
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--basil);
-      color: #fff;
-    }
-
-    .brand-mark svg { width: 18px; height: 18px; }
+    .brand-mark { width: 34px; height: 34px; flex-shrink: 0; display: block; }
 
     .brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
 
@@ -167,28 +170,26 @@
       align-items: center;
     }
 
-    .eyebrow-pill {
+    /* Texto de contexto, sem borda nem fundo: não pode parecer clicável */
+    .kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 5px 14px 5px 5px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      box-shadow: var(--shadow-sm);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      color: var(--body);
+      color: var(--muted);
     }
 
-    .eyebrow-pill b {
-      white-space: nowrap;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: var(--basil-soft);
-      color: var(--basil-deep);
-      font-weight: 700;
+    .kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--basil);
+      box-shadow: 0 0 0 4px var(--basil-soft);
     }
+
+    .kicker b { color: var(--basil-deep); font-weight: 700; }
 
     .hero h1 {
       margin-top: 28px;
@@ -196,26 +197,15 @@
       font-weight: 700;
     }
 
-    .sticker {
-      display: inline-grid;
-      place-items: center;
-      width: 0.95em;
-      height: 0.95em;
-      margin: 0 0.06em;
-      vertical-align: -0.04em;
-      font-size: 0.8em;
-      line-height: 1;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 0.24em;
-      box-shadow: 0 6px 14px -8px rgba(22, 32, 26, 0.35);
-      transform: rotate(-6deg);
-      animation: bob 5s var(--ease) infinite;
+    /* Emoji 3D (Fluent Emoji, Microsoft): parado, alinhado ao texto */
+    .emoji {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin: 0 0.04em;
+      vertical-align: -0.14em;
+      filter: drop-shadow(0 8px 10px rgba(22, 32, 26, 0.16));
     }
-
-    .sticker.alt { transform: rotate(5deg); animation-delay: -2.5s; }
-
-    .sticker span { font-size: 0.62em; line-height: 1; }
 
     @keyframes bob {
       0%, 100% { translate: 0 0; }
@@ -630,17 +620,6 @@
 
     .chart-box { position: relative; min-height: 300px; flex: 1 1 auto; }
 
-    .legend-inline {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--body);
-    }
-
-    .legend-inline span { display: inline-flex; align-items: center; gap: 7px; }
-    .legend-inline i { width: 10px; height: 10px; border-radius: 50%; }
 
     /* Barra empilhada do porte */
     .split { display: flex; flex-direction: column; gap: 26px; margin: auto 0; }
@@ -736,20 +715,13 @@
 
     .rank .pos {
       grid-area: pos;
-      align-self: start;
-      width: 28px;
-      height: 28px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      background: var(--line-soft);
       font-family: 'Funnel Display', sans-serif;
       font-weight: 700;
-      font-size: 14px;
-      color: var(--body);
+      font-size: 15px;
+      color: var(--muted);
     }
 
-    .rank li:first-child .pos { background: var(--basil); color: #fff; }
+    .rank li:first-child .pos { color: var(--basil-deep); }
 
     .rank .name { grid-area: name; font-size: 15px; font-weight: 700; color: var(--ink); }
     .rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); }
@@ -925,7 +897,7 @@
   <!-- Navegação: identidade e atalhos para cada bloco -->
   <nav class="nav" aria-label="Seções do painel">
     <a class="brand" href="#topo" aria-label="Voltar ao início">
-      <span class="brand-mark"><i data-lucide="utensils"></i></span>
+      <img class="brand-mark" src="assets/logo.svg" alt="" width="34" height="34">
       <span class="brand-text">
         <strong>Alimentação Fora do Lar</strong>
         <span>Panorama CNPJ · Receita Federal</span>
@@ -943,10 +915,10 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow-pill reveal"><b>Dados abertos</b>Receita Federal · ago/2026</span>
+        <p class="kicker reveal"><span><b>Dados abertos</b> da Receita Federal · CNPJ de ago/2026</span></p>
 
         <h1 class="display reveal" data-delay="1">
-          Bares <span class="sticker" aria-hidden="true"><span>🍺</span></span> e restaurantes <span class="sticker alt" aria-hidden="true"><span>🍽️</span></span> do Brasil, <span class="marker">em números.</span>
+          Bares <img class="emoji" src="assets/emoji/cerveja.png" alt="" width="256" height="256"> e restaurantes <img class="emoji" src="assets/emoji/prato.png" alt="" width="256" height="256"> do Brasil, <span class="marker">em números.</span>
         </h1>
 
         <p class="hero-lede reveal" data-delay="2">
@@ -1153,10 +1125,6 @@
             <h3>As aberturas caíram até 2023 e voltam a crescer desde 2024</h3>
             <p>Novas empresas de alimentação por ano, de 2021 a 2025</p>
           </div>
-          <div class="legend-inline" aria-hidden="true">
-            <span><i style="background: var(--tomato);"></i>Pico da série</span>
-            <span><i style="background: var(--basil);"></i>Ano mais recente</span>
-          </div>
           <div class="chart-box">
             <canvas id="chartAberturas" role="img" aria-label="Aberturas por ano: 2021, 356.849; 2022, 282.586; 2023, 268.190; 2024, 284.904; 2025, 315.376"></canvas>
           </div>
@@ -1293,7 +1261,7 @@
     <div class="wrap footer-grid">
       <div>
         <div class="brand">
-          <span class="brand-mark"><i data-lucide="utensils"></i></span>
+          <img class="brand-mark" src="assets/logo.svg" alt="" width="34" height="34">
           <span class="brand-text">
             <strong>Alimentação Fora do Lar</strong>
             <span>Panorama CNPJ · Receita Federal</span>
@@ -1351,6 +1319,12 @@
 
     document.querySelectorAll('.reveal').forEach(el => revelar.observe(el));
 
+    // Navegação: plana no topo, pílula translúcida depois de rolar
+    const nav = document.querySelector('.nav');
+    const ajustarNav = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    ajustarNav();
+    window.addEventListener('scroll', ajustarNav, { passive: true });
+
     // Destaca na navegação a seção que está na tela
     const links = [...document.querySelectorAll('.nav-links a')];
     const secoes = new IntersectionObserver(entradas => {
@@ -1365,7 +1339,9 @@
     // Gráfico de área: o tempo corre da esquerda para a direita
     const anos = ['2021', '2022', '2023', '2024', '2025'];
     const aberturas = [356849, 282586, 268190, 284904, 315376];
-    const corPonto = ['#D9573F', '#9AA39D', '#9AA39D', '#9AA39D', '#2E7D4F'];
+    // Cinza para o contexto; cor só onde está a história (pico e retomada)
+    const cinza = '#A7AEA9';
+    const corPonto = ['#D9573F', cinza, cinza, '#2E7D4F', '#2E7D4F'];
     let chartAberturas = null;
 
     function criarGrafico() {
@@ -1379,23 +1355,17 @@
           datasets: [{
             label: 'Novas empresas',
             data: aberturas,
-            borderColor: '#2E7D4F',
             borderWidth: 3,
-            tension: 0.35,
-            fill: true,
-            backgroundColor(ctx) {
-              const { chart } = ctx;
-              if (!chart.chartArea) return 'rgba(46,125,79,0.12)';
-              const g = chart.ctx.createLinearGradient(0, chart.chartArea.top, 0, chart.chartArea.bottom);
-              g.addColorStop(0, 'rgba(46,125,79,0.22)');
-              g.addColorStop(1, 'rgba(46,125,79,0)');
-              return g;
+            tension: 0,
+            fill: false,
+            segment: {
+              borderColor: ctx => ctx.p0DataIndex >= 2 ? '#2E7D4F' : cinza
             },
-            pointRadius: 7,
-            pointHoverRadius: 9,
+            pointRadius: [7, 4, 4, 4, 7],
+            pointHoverRadius: 8,
             pointBackgroundColor: corPonto,
             pointBorderColor: '#FFFFFF',
-            pointBorderWidth: 3
+            pointBorderWidth: 2
           }]
         },
         plugins: [{
@@ -1403,14 +1373,21 @@
           id: 'valueLabels',
           afterDatasetsDraw(chart) {
             const { ctx } = chart;
-            const progresso = chart.getDatasetMeta(0).data;
+            const pontos = chart.getDatasetMeta(0).data;
+            const notas = ['pico', '', 'piso', '', '+10,7%'];
             ctx.save();
-            ctx.font = "700 15px 'Funnel Display', sans-serif";
             ctx.textAlign = 'center';
-            progresso.forEach((ponto, i) => {
-              ctx.fillStyle = (i === 0 || i === aberturas.length - 1) ? corPonto[i] : '#16201A';
+            pontos.forEach((ponto, i) => {
               const abaixo = i === 1 || i === 2;
-              ctx.fillText(Math.round(aberturas[i] / 1000) + 'k', ponto.x, ponto.y + (abaixo ? 30 : -18));
+              const y = ponto.y + (abaixo ? 30 : -18);
+              ctx.font = "700 15px 'Funnel Display', sans-serif";
+              ctx.fillStyle = (i === 0 || i >= 3) ? corPonto[i] : '#47524B';
+              ctx.fillText(Math.round(aberturas[i] / 1000) + 'k', ponto.x, y);
+              if (notas[i]) {
+                ctx.font = "600 12px 'Figtree', sans-serif";
+                ctx.fillStyle = '#66706A';
+                ctx.fillText(notas[i], ponto.x, abaixo ? y + 16 : y - 18);
+              }
             });
             ctx.restore();
           }
@@ -1419,7 +1396,7 @@
           responsive: true,
           maintainAspectRatio: false,
           animation: reduzMovimento ? false : { duration: 1200, easing: 'easeOutQuart' },
-          layout: { padding: { left: 16, right: 16, top: 34, bottom: 0 } },
+          layout: { padding: { left: 20, right: 20, top: 52, bottom: 0 } },
           interaction: { mode: 'index', intersect: false },
           plugins: {
             legend: { display: false },
@@ -1439,7 +1416,7 @@
             x: {
               offset: true,
               grid: { display: false },
-              border: { color: '#E5E3DB' },
+              border: { display: false },
               ticks: { font: { family: "'Funnel Display', sans-serif", size: 15, weight: '700' }, color: '#47524B' }
             },
             y: { display: false, min: 200000, max: 380000 }
