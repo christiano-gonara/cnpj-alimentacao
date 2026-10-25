@@ -205,10 +205,20 @@
       margin: 0 0.06em;
       vertical-align: -0.08em;
       filter: drop-shadow(0 8px 10px rgba(22, 32, 26, 0.16));
-      animation: bob 5s ease-in-out infinite;
+      --tilt: -8deg;
+      animation: flutuar 6s ease-in-out infinite;
     }
 
-    .emoji:last-of-type { animation-delay: -2.5s; }
+    /* O segundo inclina para o outro lado e anda em outro ritmo, para não andarem juntos */
+    .emoji:last-of-type { --tilt: 7deg; animation-duration: 7.5s; animation-delay: -3s; animation-direction: reverse; }
+
+    /* Deriva em laço: sobe, vai para o lado e desce balançando, inclinado na diagonal */
+    @keyframes flutuar {
+      0%, 100% { translate: 0 0; rotate: var(--tilt); }
+      25% { translate: 0.04em -0.07em; rotate: calc(var(--tilt) + 5deg); }
+      50% { translate: 0.08em -0.01em; rotate: calc(var(--tilt) + 1deg); }
+      75% { translate: 0.03em 0.05em; rotate: calc(var(--tilt) - 4deg); }
+    }
 
     @keyframes bob {
       0%, 100% { translate: 0 0; }
