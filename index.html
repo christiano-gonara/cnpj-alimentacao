@@ -197,15 +197,18 @@
       font-weight: 700;
     }
 
-    /* Emoji 3D (Fluent Emoji, Microsoft): parado, alinhado ao texto */
+    /* Emoji 3D (Fluent Emoji, Microsoft): flutua devagar ao lado do texto */
     .emoji {
       display: inline-block;
-      width: 1em;
-      height: 1em;
-      margin: 0 0.04em;
-      vertical-align: -0.14em;
+      width: 0.82em;
+      height: 0.82em;
+      margin: 0 0.06em;
+      vertical-align: -0.08em;
       filter: drop-shadow(0 8px 10px rgba(22, 32, 26, 0.16));
+      animation: bob 5s ease-in-out infinite;
     }
+
+    .emoji:last-of-type { animation-delay: -2.5s; }
 
     @keyframes bob {
       0%, 100% { translate: 0 0; }
