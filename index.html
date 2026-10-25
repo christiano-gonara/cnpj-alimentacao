@@ -363,22 +363,65 @@
 
     .preview-caption { margin-top: 6px; font-size: 15px; color: var(--body); }
 
-    /* Lista das atividades: texto simples, nada que pareça clicável */
-    .preview-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 16px;
+    .preview-rows {
       margin-top: 22px;
       padding-top: 18px;
       border-top: 1px solid var(--line-soft);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
+      display: grid;
+      gap: 14px;
     }
 
-    .preview-list li { display: flex; align-items: center; gap: 8px; }
-    .preview-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--basil-mid); flex-shrink: 0; }
+    .preview-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
+    .preview-row span { font-weight: 600; color: var(--ink); }
+    .preview-row em { font-style: normal; font-weight: 700; color: var(--basil-deep); }
+
+    .meter {
+      grid-column: 1 / -1;
+      height: 8px;
+      border-radius: 6px;
+      background: var(--line-soft);
+      overflow: hidden;
+    }
+
+    .meter b {
+      display: block;
+      height: 100%;
+      border-radius: 6px;
+      background: var(--basil);
+    }
+
+    .float-chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.25;
+      animation: bob 6s var(--ease) infinite;
+    }
+
+    .float-chip strong { display: block; font-size: 14px; color: var(--ink); }
+
+    .float-chip .ico {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--basil-soft);
+      color: var(--basil-deep);
+    }
+
+    .float-chip .ico svg { width: 17px; height: 17px; }
+    .chip-a { top: -26px; right: -18px; }
+    .chip-b { bottom: -28px; left: -26px; animation-delay: -3s; }
+    .chip-b .ico { background: var(--tomato-soft); color: var(--tomato); }
 
 
     /* ---------- Frase-resumo ---------- */
@@ -815,6 +858,8 @@
       .summary { padding-bottom: 64px; }
       .footer-grid { grid-template-columns: minmax(0, 1fr); }
       .footer-links { align-items: flex-start; }
+      .chip-a { right: 8px; }
+      .chip-b { left: 8px; }
     }
 
     @media (max-width: 560px) {
@@ -827,7 +872,8 @@
       .card-photo { inset: 0 0 0 30%; opacity: 0.35; }
       .big-facts dd { font-size: 20px; }
       .value { font-size: 34px; }
-      .split-key, .preview-list { grid-template-columns: 1fr; }
+      .split-key { grid-template-columns: 1fr; }
+      .float-chip { display: none; }
       .split-seg { font-size: 16px; padding: 8px; }
       .diverge-row { grid-template-columns: minmax(104px, 40%) 1fr 56px; gap: 8px; }
       .cta { padding: 32px 20px; border-radius: 24px; }
@@ -880,16 +926,22 @@
             <span class="live"><i></i>Ago/2026</span>
           </div>
           <div class="preview-number display" data-count="1511132">1.511.132</div>
-          <p class="preview-caption">somando as 6 atividades analisadas</p>
+          <p class="preview-caption">de bares, restaurantes, lanchonetes, delivery e padarias</p>
 
-          <ul class="preview-list" aria-label="Atividades analisadas (CNAE)">
-            <li>Restaurantes</li>
-            <li>Lanchonetes e sucos</li>
-            <li>Delivery e marmitas</li>
-            <li>Bares sem entretenimento</li>
-            <li>Bares com entretenimento</li>
-            <li>Padarias com revenda</li>
-          </ul>
+          <div class="preview-rows">
+            <div class="preview-row"><span>São MEI</span><em>63,1%</em><div class="meter"><b data-w="63.1"></b></div></div>
+            <div class="preview-row"><span>Estão em São Paulo</span><em>27,7%</em><div class="meter"><b data-w="27.7"></b></div></div>
+            <div class="preview-row"><span>São lanchonetes</span><em>30,6%</em><div class="meter"><b data-w="30.6"></b></div></div>
+          </div>
+        </div>
+
+        <div class="float-chip chip-a" aria-hidden="true">
+          <span class="ico"><i data-lucide="trending-up"></i></span>
+          <span><strong>+10,7% em 2025</strong>retomada das aberturas</span>
+        </div>
+        <div class="float-chip chip-b" aria-hidden="true">
+          <span class="ico"><i data-lucide="flag"></i></span>
+          <span><strong>Pico em 2021</strong>356,8 mil aberturas</span>
         </div>
       </div>
     </div>
