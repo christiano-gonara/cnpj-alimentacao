@@ -220,9 +220,11 @@
       75% { translate: 0.03em 0.05em; rotate: calc(var(--tilt) - 4deg); }
     }
 
-    @keyframes bob {
-      0%, 100% { translate: 0 0; }
-      50% { translate: 0 -0.06em; }
+    /* Deriva curta dos cartõezinhos do topo: poucos pixels, só para parecerem soltos */
+    @keyframes deriva {
+      0%, 100% { translate: 0 0; rotate: 0deg; }
+      33% { translate: 3px -6px; rotate: 0.6deg; }
+      66% { translate: -2px -3px; rotate: -0.4deg; }
     }
 
     .marker {
@@ -403,7 +405,7 @@
       font-size: 13px;
       color: var(--muted);
       line-height: 1.25;
-      animation: bob 6s var(--ease) infinite;
+      animation: deriva 7s ease-in-out infinite;
     }
 
     .float-chip strong { display: block; font-size: 14px; color: var(--ink); }
@@ -420,7 +422,7 @@
 
     .float-chip .ico svg { width: 17px; height: 17px; }
     .chip-a { top: -26px; right: -18px; }
-    .chip-b { bottom: -28px; left: -26px; animation-delay: -3s; }
+    .chip-b { bottom: -28px; left: -26px; animation-delay: -3.5s; animation-direction: reverse; }
     .chip-b .ico { background: var(--tomato-soft); color: var(--tomato); }
 
 
@@ -493,7 +495,7 @@
     }
 
     .bento.perfil { grid-template-areas: "hero hero a a" "hero hero c c"; }
-    .bento.aberturas { grid-template-areas: "c c hero hero" "c c a a"; }
+    .bento.aberturas { grid-template-areas: "c c hero hero" "a a hero hero"; }
     .bento .big { grid-area: hero; }
     .bento .area-a { grid-area: a; }
     .bento .area-b { grid-area: b; }
