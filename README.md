@@ -6,16 +6,24 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 ![Tour pelo dashboard](assets/dashboard-tour.gif)
 
-## Dashboard
+## 📸 Capturas de tela
 
 <table>
   <tr>
-    <td width="50%" valign="top"><img src="assets/01-panorama.png" alt="Topo do dashboard com o total de empresas ativas"><br><sub><b>Panorama</b><br>Total de empresas ativas, destaques e a frase-resumo do setor.</sub></td>
-    <td width="50%" valign="top"><img src="assets/02-perfil.png" alt="Bloco 01, perfil do setor"><br><sub><b>01 · Perfil do setor</b><br>Estabelecimentos, estado líder e a divisão por porte.</sub></td>
+    <th>Panorama</th>
+    <th>Perfil do setor</th>
   </tr>
   <tr>
-    <td width="50%" valign="top"><img src="assets/03-aberturas.png" alt="Bloco 02, ritmo de abertura e capital"><br><sub><b>02 · Aberturas e capital</b><br>Série de 2021 a 2025, total aberto e capital social mediano.</sub></td>
-    <td width="50%" valign="top"><img src="assets/04-estados-atividades.png" alt="Bloco 03, estados e atividades"><br><sub><b>03 · Estados e atividades</b><br>Variação das aberturas por estado e ranking por tipo de negócio.</sub></td>
+    <td align="center"><img src="assets/01-panorama.png" alt="Topo do dashboard com o total de empresas ativas"></td>
+    <td align="center"><img src="assets/02-perfil.png" alt="Perfil do setor: estabelecimentos, estado líder e porte"></td>
+  </tr>
+  <tr>
+    <th>Aberturas e capital</th>
+    <th>Estados e atividades</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/03-aberturas.png" alt="Série de aberturas de 2021 a 2025 e capital social"></td>
+    <td align="center"><img src="assets/04-estados-atividades.png" alt="Variação das aberturas por estado e ranking por tipo de negócio"></td>
   </tr>
 </table>
 
