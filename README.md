@@ -1,25 +1,23 @@
-# Base CNPJ — Bares, Restaurantes e Alimentação Fora do Lar
+# Alimentação Fora do Lar no Brasil — Panorama CNPJ
 
 Análise nacional do setor de bares, restaurantes e alimentação fora do lar, usando os dados abertos de CNPJ da Receita Federal (competência 2026-08).
 
 [**Abrir dashboard publicado**](https://christiano-gonara.github.io/cnpj-alimentacao/) · [**Ver notebook técnico**](notebooks/analise_cnpj.ipynb) · [**Baixar base tratada (Parquet)**](https://github.com/christiano-gonara/cnpj-alimentacao/releases/latest)
 
-## Dashboard executivo
+![Tour pelo dashboard](assets/dashboard-tour.gif)
+
+## Dashboard
 
 <table>
   <tr>
-    <td width="50%" valign="top"><img src="assets/01-panorama.png" alt="Bloco 1 · Panorama Geral"><br><sub><b>01 · Panorama nacional</b><br>Identidade, cabeçalho e métricas iniciais.</sub></td>
-    <td width="50%" valign="top"><img src="assets/02-perguntas.png" alt="Bloco 2 · Perguntas"><br><sub><b>02 · Perguntas-chave</b><br>Cards com as respostas obrigatórias.</sub></td>
+    <td width="50%" valign="top"><img src="assets/01-panorama.png" alt="Topo do dashboard com o total de empresas ativas"><br><sub><b>Panorama</b><br>Total de empresas ativas, destaques e a frase-resumo do setor.</sub></td>
+    <td width="50%" valign="top"><img src="assets/02-perfil.png" alt="Bloco 01, perfil do setor"><br><sub><b>01 · Perfil do setor</b><br>Estabelecimentos, estado líder e a divisão por porte.</sub></td>
   </tr>
   <tr>
-    <td width="50%" valign="top"><img src="assets/03-graficos.png" alt="Bloco 3 · Gráficos e Séries"><br><sub><b>03 · Gráficos & tendências</b><br>Série histórica de aberturas e rosca por porte.</sub></td>
-    <td width="50%" valign="top"><img src="assets/04-estados-atividades.png" alt="Bloco 4 · Estados e Atividades"><br><sub><b>04 · Estados & atividades</b><br>Concentração regional e principais tipos de negócio.</sub></td>
+    <td width="50%" valign="top"><img src="assets/03-aberturas.png" alt="Bloco 02, ritmo de abertura e capital"><br><sub><b>02 · Aberturas e capital</b><br>Série de 2021 a 2025, total aberto e capital social mediano.</sub></td>
+    <td width="50%" valign="top"><img src="assets/04-estados-atividades.png" alt="Bloco 03, estados e atividades"><br><sub><b>03 · Estados e atividades</b><br>Variação das aberturas por estado e ranking por tipo de negócio.</sub></td>
   </tr>
 </table>
-
-## Navegação do dashboard
-
-![Prévia animada do dashboard](assets/dashboard-tour-atualizado.gif)
 
 ## Perguntas respondidas
 
@@ -31,7 +29,7 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 ## Entregáveis
 
-- [`index.html`](index.html): dashboard executivo para leitura rápida.
+- [`index.html`](index.html): dashboard executivo para leitura rápida, em uma página estática.
 - [`notebooks/analise_cnpj.ipynb`](notebooks/analise_cnpj.ipynb): análise técnica executada, com código, respostas e gráficos.
 - [`scripts/01_ingestao.py`](scripts/01_ingestao.py) e [`scripts/02_tratamento.py`](scripts/02_tratamento.py): ingestão, limpeza, junção e geração da base.
 - [`dados/amostra/amostra_base_afl.csv`](dados/amostra/amostra_base_afl.csv): amostra pública com 20 mil linhas.
