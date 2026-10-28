@@ -48,7 +48,7 @@ export default function Filtros({ filtros, onChange, opcoes, status }) {
         {filtros.porte && (
           <p className="filtros-status nota">
             <Info strokeWidth={2.2} />
-            O porte do cadastro é o de hoje, e quem fechou já mudou de porte. Por isso aberturas, fechamentos e sobrevivência mostram todos os portes.
+            Aberturas e sobrevivência seguem com todos os portes: o cadastro só guarda o porte de hoje.
           </p>
         )}
       </div>
