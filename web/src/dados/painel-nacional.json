@@ -200,50 +200,8 @@
    }
   ],
   "sobrevivencia": {
-   "mediana_anos_ate_fechar": 1.5,
+   "mediana_anos_ate_fechar": 0.9,
    "coortes": [
-    {
-     "ano": 2015,
-     "abertos": 171705,
-     "ativos": 33263,
-     "fechados": 89758,
-     "percentual_ativos": 19.4
-    },
-    {
-     "ano": 2016,
-     "abertos": 176333,
-     "ativos": 36232,
-     "fechados": 90548,
-     "percentual_ativos": 20.5
-    },
-    {
-     "ano": 2017,
-     "abertos": 191009,
-     "ativos": 43333,
-     "fechados": 96228,
-     "percentual_ativos": 22.7
-    },
-    {
-     "ano": 2018,
-     "abertos": 213949,
-     "ativos": 54163,
-     "fechados": 101941,
-     "percentual_ativos": 25.3
-    },
-    {
-     "ano": 2019,
-     "abertos": 267701,
-     "ativos": 74482,
-     "fechados": 121168,
-     "percentual_ativos": 27.8
-    },
-    {
-     "ano": 2020,
-     "abertos": 325516,
-     "ativos": 88163,
-     "fechados": 150982,
-     "percentual_ativos": 27.1
-    },
     {
      "ano": 2021,
      "abertos": 356849,
