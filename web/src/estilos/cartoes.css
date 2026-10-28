@@ -68,8 +68,17 @@
   opacity: 0.55;
 }
 
+/* Cartão de indicador (o pequeno, com um número só): mesma escala em todos, para o número
+   e a frase de apoio lerem do mesmo tamanho onde quer que o cartão apareça */
+.card.indicador { padding: 30px; gap: 16px; }
+.card.indicador .label { font-size: 16px; letter-spacing: 0.05em; color: var(--body); }
+.card.indicador .tag { font-size: 14.5px; padding: 5px 12px; }
+.card.indicador .value { font-size: clamp(44px, 5vw, 60px); }
+.card.indicador .detail { font-size: 18px; }
+.card.indicador .sub { font-size: 16px; color: var(--body); margin-top: 4px; }
+
 .card.big .label { font-size: 17px; letter-spacing: 0.05em; color: var(--body); }
-.card.big .tag { font-size: 14px; padding: 5px 12px; }
+.card.big .tag { font-size: 16.5px; padding: 6px 14px; }
 .card.big .value { font-size: clamp(64px, 8vw, 104px); }
 .card.big .detail { font-size: 18px; }
 .card.big .sub { font-size: 15px; color: var(--body); }
