@@ -71,14 +71,14 @@ function configuracao(anos, valores) {
         ctx.save();
         ctx.textAlign = 'center';
         chart.getDatasetMeta(0).data.forEach((ponto, i) => {
-          const y = ponto.y + (d.abaixo[i] ? 30 : -18);
-          ctx.font = "700 15px 'Funnel Display', sans-serif";
+          const y = ponto.y + (d.abaixo[i] ? 36 : -22);
+          ctx.font = "700 19px 'Funnel Display', sans-serif";
           ctx.fillStyle = d.corRotulo[i];
           ctx.fillText(fmtRotulo(valores[i]), ponto.x, y);
           if (d.notas[i]) {
-            ctx.font = "600 12px 'Figtree', sans-serif";
+            ctx.font = "600 14.5px 'Figtree', sans-serif";
             ctx.fillStyle = NOTA;
-            ctx.fillText(d.notas[i], ponto.x, d.abaixo[i] ? y + 16 : y - 18);
+            ctx.fillText(d.notas[i], ponto.x, d.abaixo[i] ? y + 20 : y - 22);
           }
         });
         ctx.restore();
@@ -88,7 +88,7 @@ function configuracao(anos, valores) {
       responsive: true,
       maintainAspectRatio: false,
       animation: reduzMovimento() ? false : { duration: 1200, easing: 'easeOutQuart' },
-      layout: { padding: { left: 20, right: 20, top: 52, bottom: 0 } },
+      layout: { padding: { left: 24, right: 24, top: 64, bottom: 0 } },
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },

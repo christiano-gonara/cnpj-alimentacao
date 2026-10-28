@@ -12,6 +12,8 @@ const CORES = {
   'Não informado': '#E5E3DB',
 };
 
+const PRINCIPAIS = new Set(['MEI', 'Microempresa']);
+
 // Abaixo disso o número não cabe dentro do segmento e fica só na legenda
 const MINIMO_PARA_ROTULO = 10;
 
@@ -29,7 +31,7 @@ export default function BarraPorte({ porte }) {
       </div>
       <div className="split-key">
         {porte.map((p) => (
-          <div className="split-key-item" key={p.nome}>
+          <div className={`split-key-item${PRINCIPAIS.has(p.nome) ? ' principal' : ''}`} key={p.nome}>
             <span className="swatch" style={{ background: CORES[p.nome] }} />
             <div><strong>{PORTES[p.nome]}</strong><span className="pct">{fmtMilCurto(p.total)} · {fmtPct(p.percentual)}</span></div>
           </div>

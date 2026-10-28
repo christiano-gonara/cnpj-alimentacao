@@ -58,7 +58,7 @@ export default function Aberturas({ painel, filtrado }) {
             <GraficoAberturas serie={aberturas} />
           </Revelar>
 
-          <Revelar como="article" className="card area-a" atraso="2">
+          <Revelar como="article" className="card indicador area-a" atraso="2">
             <div className="card-top">
               <span className="label">Capital social</span>
               <span className="tag">Mediana</span>

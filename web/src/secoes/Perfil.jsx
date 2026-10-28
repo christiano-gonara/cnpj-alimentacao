@@ -53,7 +53,7 @@ export default function Perfil({ painel, filtros, filtrado }) {
             </div>
           </Revelar>
 
-          <Revelar como="article" className="card area-a" atraso="1">
+          <Revelar como="article" className="card indicador area-a" atraso="1">
             <div className="card-top">
               <span className="label">{por === 'estado' ? 'Estado líder' : 'Município líder'}</span>
               {lider && <span className="tag">{fmtPct(lider.percentual)}</span>}
