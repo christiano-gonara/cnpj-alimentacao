@@ -1,0 +1,17 @@
+# Deploy da API no Render (New > Blueprint, apontando para este repositório).
+services:
+  - type: web
+    name: cnpj-alimentacao-api
+    runtime: python
+    plan: free
+    # A base da API (87 MB) não fica no git: vem anexada à release do repositório.
+    buildCommand: >-
+      pip install -r requirements.txt &&
+      mkdir -p dados/api &&
+      curl -fL -o dados/api/base_api.parquet
+      https://github.com/christiano-gonara/cnpj-alimentacao/releases/download/v1.0.0/base_api.parquet
+    startCommand: uvicorn api.main:criar_app --factory --host 0.0.0.0 --port $PORT
+    healthCheckPath: /saude
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.3

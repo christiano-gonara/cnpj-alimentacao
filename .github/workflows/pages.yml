@@ -1,5 +1,4 @@
-# Publica a pasta web/ no GitHub Pages. O Pages só serve a raiz ou docs/ direto do branch;
-# com o site em web/, o deploy passa a ser feito por aqui.
+# Gera o dashboard (React + Vite) e publica no GitHub Pages.
 name: Publicar dashboard
 
 on:
@@ -23,11 +22,25 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+    defaults:
+      run:
+        working-directory: web
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      # Endereço da API: variável do repositório (Settings > Variables > API_URL). Sem ela,
+      # vale o endereço padrão do Render definido em src/lib/api.js.
+      - run: npm run build
+        env:
+          VITE_API_URL: ${{ vars.API_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: web/dist
       - id: deploy
         uses: actions/deploy-pages@v4
