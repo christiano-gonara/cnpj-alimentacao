@@ -1,0 +1,15 @@
+/* Matriz x filial, no cartão grande */
+
+.split-thin { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 3px; }
+.split-thin span:first-child { background: var(--basil); border-radius: 6px; }
+.split-thin span:last-child { background: var(--basil-mid); border-radius: 6px; min-width: 6px; }
+
+.split-thin-key {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--body);
+}

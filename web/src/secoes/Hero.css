@@ -1,0 +1,245 @@
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 72px 0 88px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* Texto de contexto, sem borda nem fundo: não pode parecer clicável */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.kicker::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--basil);
+  box-shadow: 0 0 0 4px var(--basil-soft);
+}
+
+.kicker b { color: var(--basil-deep); font-weight: 700; }
+
+.hero h1 {
+  margin-top: 28px;
+  font-size: clamp(40px, 5.6vw, 68px);
+  font-weight: 700;
+}
+
+/* Emoji 3D (Fluent Emoji, Microsoft): flutua devagar ao lado do texto */
+.emoji {
+  display: inline-block;
+  width: 0.82em;
+  height: 0.82em;
+  margin: 0 0.06em;
+  vertical-align: -0.08em;
+  filter: drop-shadow(0 8px 10px rgba(22, 32, 26, 0.16));
+  --tilt: -8deg;
+  animation: flutuar 6s ease-in-out infinite;
+}
+
+/* O segundo inclina para o outro lado e anda em outro ritmo, para não andarem juntos */
+.emoji:last-of-type { --tilt: 7deg; animation-duration: 7.5s; animation-delay: -3s; animation-direction: reverse; }
+
+/* Deriva em laço: sobe, vai para o lado e desce balançando, inclinado na diagonal */
+@keyframes flutuar {
+  0%, 100% { translate: 0 0; rotate: var(--tilt); }
+  25% { translate: 0.04em -0.07em; rotate: calc(var(--tilt) + 5deg); }
+  50% { translate: 0.08em -0.01em; rotate: calc(var(--tilt) + 1deg); }
+  75% { translate: 0.03em 0.05em; rotate: calc(var(--tilt) - 4deg); }
+}
+
+/* Deriva curta dos cartõezinhos do topo: poucos pixels, só para parecerem soltos */
+@keyframes deriva {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  33% { translate: 3px -6px; rotate: 0.6deg; }
+  66% { translate: -2px -3px; rotate: -0.4deg; }
+}
+
+.marker {
+  position: relative;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.marker::before {
+  content: '';
+  position: absolute;
+  inset: 0.12em -0.12em 0.02em -0.14em;
+  z-index: -1;
+  background: var(--marker);
+  border-radius: 0.14em;
+  transform: rotate(-1.2deg) scaleX(0);
+  transform-origin: left center;
+  animation: mark 0.9s 0.5s var(--ease) forwards;
+}
+
+@keyframes mark { to { transform: rotate(-1.2deg) scaleX(1); } }
+
+.hero-lede {
+  margin-top: 26px;
+  max-width: 560px;
+  font-size: 19px;
+  color: var(--body);
+}
+
+/* Cartão do hero: o número principal como “prévia” do painel */
+.hero-visual { position: relative; }
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: -48px -40px;
+  z-index: -1;
+  background-image: radial-gradient(rgba(46, 125, 79, 0.22) 1.2px, transparent 1.3px);
+  background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);
+  mask-image: radial-gradient(closest-side, #000 40%, transparent);
+}
+
+.preview {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 60px -36px rgba(22, 32, 26, 0.45);
+  padding: 26px;
+}
+
+.preview-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--basil-soft);
+  color: var(--basil-deep);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 12.5px;
+}
+
+.live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--basil);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 125, 79, 0.5); }
+  70% { box-shadow: 0 0 0 7px rgba(46, 125, 79, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 125, 79, 0); }
+}
+
+.preview-number {
+  margin-top: 18px;
+  font-size: clamp(44px, 5vw, 58px);
+  font-weight: 700;
+}
+
+.preview-caption { margin-top: 6px; font-size: 15px; color: var(--body); }
+
+.preview-rows {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+  display: grid;
+  gap: 14px;
+}
+
+.preview-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
+.preview-row span { font-weight: 600; color: var(--ink); }
+.preview-row em { font-style: normal; font-weight: 700; color: var(--basil-deep); }
+
+.meter {
+  grid-column: 1 / -1;
+  height: 8px;
+  border-radius: 6px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+
+.meter b {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: var(--basil);
+}
+
+.float-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.25;
+  animation: deriva 7s ease-in-out infinite;
+}
+
+.float-chip strong { display: block; font-size: 14px; color: var(--ink); }
+
+.float-chip .ico {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--basil-soft);
+  color: var(--basil-deep);
+}
+
+.float-chip .ico svg { width: 17px; height: 17px; }
+.chip-a { top: -26px; right: -18px; }
+.chip-b { bottom: -28px; left: -26px; animation-delay: -3.5s; animation-direction: reverse; }
+.chip-b .ico { background: var(--tomato-soft); color: var(--tomato); }
+
+@media (prefers-reduced-motion: reduce) {
+  .marker::before { transform: rotate(-1.2deg) scaleX(1); }
+}
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-visual { max-width: 520px; }
+}
+
+@media (max-width: 760px) {
+  .hero { padding: 48px 0 72px; }
+  .chip-a { right: 8px; }
+  .chip-b { left: 8px; }
+}
+
+@media (max-width: 560px) {
+  .hero-lede { font-size: 17px; }
+  .float-chip { display: none; }
+}

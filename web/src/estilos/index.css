@@ -1,0 +1,8 @@
+/* Ordem das camadas: do mais geral para o mais específico. O que vem depois ganha, então
+   o CSS de cada componente (importado no próprio .jsx) sempre pode ajustar o que está aqui. */
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './botoes.css';
+@import './cartoes.css';
+@import './movimento.css';

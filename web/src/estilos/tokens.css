@@ -1,0 +1,31 @@
+:root {
+  /* Base clara e neutra; o verde manjericão é a única cor de destaque */
+  --bg: #F7F6F2;
+  --bg-band: #EEF5EF;
+  --surface: #FFFFFF;
+  --ink: #16201A;
+  --body: #47524B;
+  --muted: #66706A;
+  --line: #E5E3DB;
+  --line-soft: #EFEDE6;
+
+  --basil: #2E7D4F;
+  --basil-deep: #1F5C39;
+  --basil-soft: #E3F1E7;
+  --basil-mid: #8CC3A0;
+  --marker: #CFEFD3;
+
+  /* Tomate só para o pico da série e para o que caiu */
+  --tomato: #D9573F;
+  --tomato-soft: #FBE9E4;
+  --neutral-bar: #CFCBBF;
+
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 32, 26, 0.05);
+  --shadow-card: 0 1px 2px rgba(22, 32, 26, 0.04), 0 12px 32px -20px rgba(22, 32, 26, 0.28);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

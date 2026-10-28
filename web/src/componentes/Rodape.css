@@ -1,0 +1,42 @@
+/* ---------- Rodapé ---------- */
+footer { border-top: 1px solid var(--line); padding: 40px 0 48px; font-size: 14px; color: var(--muted); }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr auto;
+  gap: 28px 48px;
+  align-items: start;
+}
+
+.footer-grid .brand-text strong { font-size: 17px; }
+.footer-grid p { margin-top: 4px; }
+
+.footer-label { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.footer-name { font-weight: 700; color: var(--ink); }
+
+.footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.footer-link svg { width: 16px; height: 16px; }
+.footer-link:hover { background: var(--basil-soft); border-color: var(--basil-mid); }
+
+.footer-top { font-weight: 700; color: var(--body); text-underline-offset: 3px; }
+.footer-top:hover { color: var(--basil-deep); }
+
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: minmax(0, 1fr); }
+  .footer-links { align-items: flex-start; }
+}

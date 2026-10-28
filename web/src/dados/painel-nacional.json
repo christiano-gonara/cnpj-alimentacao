@@ -1,0 +1,355 @@
+{
+ "painel": {
+  "resumo": {
+   "empresas_ativas": 1511132,
+   "estabelecimentos_ativos": 1543267,
+   "estabelecimentos_registrados": 5224132,
+   "percentual_matriz": 97.6,
+   "capital_social_mediana": 5000.0,
+   "capital_social_p90": 60000.0
+  },
+  "porte": [
+   {
+    "codigo": null,
+    "nome": "MEI",
+    "total": 953769,
+    "percentual": 63.1
+   },
+   {
+    "codigo": null,
+    "nome": "Microempresa",
+    "total": 486715,
+    "percentual": 32.2
+   },
+   {
+    "codigo": null,
+    "nome": "Empresa de pequeno porte",
+    "total": 59403,
+    "percentual": 3.9
+   },
+   {
+    "codigo": null,
+    "nome": "Demais",
+    "total": 11245,
+    "percentual": 0.7
+   }
+  ],
+  "lideres_por": "estado",
+  "lideres": [
+   {
+    "codigo": "SP",
+    "nome": "SP",
+    "total": 427708,
+    "percentual": 27.7
+   },
+   {
+    "codigo": "MG",
+    "nome": "MG",
+    "total": 174192,
+    "percentual": 11.3
+   }
+  ],
+  "atividades": [
+   {
+    "codigo": "5611203",
+    "nome": "Lanchonetes, casas de chá, de sucos e similares",
+    "total": 472218,
+    "percentual": 30.6
+   },
+   {
+    "codigo": "5611201",
+    "nome": "Restaurantes e similares",
+    "total": 403467,
+    "percentual": 26.1
+   },
+   {
+    "codigo": "5620104",
+    "nome": "Fornecimento de alimentos preparados preponderantemente para consumo domiciliar",
+    "total": 380242,
+    "percentual": 24.6
+   },
+   {
+    "codigo": "5611204",
+    "nome": "Bares e outros estabelecimentos especializados em servir bebidas, sem entretenimento",
+    "total": 119157,
+    "percentual": 7.7
+   },
+   {
+    "codigo": "4721102",
+    "nome": "Padaria e confeitaria com predominância de revenda",
+    "total": 87081,
+    "percentual": 5.6
+   },
+   {
+    "codigo": "5611205",
+    "nome": "Bares e outros estabelecimentos especializados em servir bebidas, com entretenimento",
+    "total": 81102,
+    "percentual": 5.3
+   }
+  ],
+  "aberturas": [
+   {
+    "ano": 2021,
+    "aberturas": 356849
+   },
+   {
+    "ano": 2022,
+    "aberturas": 282586
+   },
+   {
+    "ano": 2023,
+    "aberturas": 268190
+   },
+   {
+    "ano": 2024,
+    "aberturas": 284904
+   },
+   {
+    "ano": 2025,
+    "aberturas": 315376
+   }
+  ],
+  "variacao": [
+   {
+    "codigo": "GO",
+    "nome": "GO",
+    "inicio": 12570,
+    "fim": 14867,
+    "variacao_percentual": 18.3
+   },
+   {
+    "codigo": "SC",
+    "nome": "SC",
+    "inicio": 14479,
+    "fim": 15677,
+    "variacao_percentual": 8.3
+   },
+   {
+    "codigo": "PR",
+    "nome": "PR",
+    "inicio": 19662,
+    "fim": 18712,
+    "variacao_percentual": -4.8
+   },
+   {
+    "codigo": "MG",
+    "nome": "MG",
+    "inicio": 38120,
+    "fim": 35058,
+    "variacao_percentual": -8.0
+   },
+   {
+    "codigo": "RS",
+    "nome": "RS",
+    "inicio": 17773,
+    "fim": 16284,
+    "variacao_percentual": -8.4
+   },
+   {
+    "codigo": "SP",
+    "nome": "SP",
+    "inicio": 96520,
+    "fim": 83684,
+    "variacao_percentual": -13.3
+   },
+   {
+    "codigo": "BA",
+    "nome": "BA",
+    "inicio": 17843,
+    "fim": 14370,
+    "variacao_percentual": -19.5
+   },
+   {
+    "codigo": "RJ",
+    "nome": "RJ",
+    "inicio": 43207,
+    "fim": 34639,
+    "variacao_percentual": -19.8
+   }
+  ],
+  "saldo": [
+   {
+    "ano": 2021,
+    "aberturas": 356849,
+    "fechamentos": 140333,
+    "saldo": 216516
+   },
+   {
+    "ano": 2022,
+    "aberturas": 282586,
+    "fechamentos": 157469,
+    "saldo": 125117
+   },
+   {
+    "ano": 2023,
+    "aberturas": 268190,
+    "fechamentos": 190192,
+    "saldo": 77998
+   },
+   {
+    "ano": 2024,
+    "aberturas": 284904,
+    "fechamentos": 206000,
+    "saldo": 78904
+   },
+   {
+    "ano": 2025,
+    "aberturas": 315376,
+    "fechamentos": 216643,
+    "saldo": 98733
+   }
+  ],
+  "sobrevivencia": {
+   "mediana_anos_ate_fechar": 1.5,
+   "coortes": [
+    {
+     "ano": 2015,
+     "abertos": 171705,
+     "ativos": 33263,
+     "fechados": 89758,
+     "percentual_ativos": 19.4
+    },
+    {
+     "ano": 2016,
+     "abertos": 176333,
+     "ativos": 36232,
+     "fechados": 90548,
+     "percentual_ativos": 20.5
+    },
+    {
+     "ano": 2017,
+     "abertos": 191009,
+     "ativos": 43333,
+     "fechados": 96228,
+     "percentual_ativos": 22.7
+    },
+    {
+     "ano": 2018,
+     "abertos": 213949,
+     "ativos": 54163,
+     "fechados": 101941,
+     "percentual_ativos": 25.3
+    },
+    {
+     "ano": 2019,
+     "abertos": 267701,
+     "ativos": 74482,
+     "fechados": 121168,
+     "percentual_ativos": 27.8
+    },
+    {
+     "ano": 2020,
+     "abertos": 325516,
+     "ativos": 88163,
+     "fechados": 150982,
+     "percentual_ativos": 27.1
+    },
+    {
+     "ano": 2021,
+     "abertos": 356849,
+     "ativos": 106794,
+     "fechados": 159039,
+     "percentual_ativos": 29.9
+    },
+    {
+     "ano": 2022,
+     "abertos": 282586,
+     "ativos": 111240,
+     "fechados": 117965,
+     "percentual_ativos": 39.4
+    },
+    {
+     "ano": 2023,
+     "abertos": 268190,
+     "ativos": 156534,
+     "fechados": 101299,
+     "percentual_ativos": 58.4
+    },
+    {
+     "ano": 2024,
+     "abertos": 284904,
+     "ativos": 177291,
+     "fechados": 93536,
+     "percentual_ativos": 62.2
+    },
+    {
+     "ano": 2025,
+     "abertos": 315376,
+     "ativos": 239061,
+     "fechados": 75747,
+     "percentual_ativos": 75.8
+    }
+   ]
+  },
+  "historico_ignora_porte": false
+ },
+ "opcoes": {
+  "ufs": [
+   "AC",
+   "AL",
+   "AM",
+   "AP",
+   "BA",
+   "CE",
+   "DF",
+   "ES",
+   "EX",
+   "GO",
+   "MA",
+   "MG",
+   "MS",
+   "MT",
+   "PA",
+   "PB",
+   "PE",
+   "PI",
+   "PR",
+   "RJ",
+   "RN",
+   "RO",
+   "RR",
+   "RS",
+   "SC",
+   "SE",
+   "SP",
+   "TO"
+  ],
+  "atividades": [
+   {
+    "codigo": "5611205",
+    "nome": "Bares e outros estabelecimentos especializados em servir bebidas, com entretenimento"
+   },
+   {
+    "codigo": "5611204",
+    "nome": "Bares e outros estabelecimentos especializados em servir bebidas, sem entretenimento"
+   },
+   {
+    "codigo": "5620104",
+    "nome": "Fornecimento de alimentos preparados preponderantemente para consumo domiciliar"
+   },
+   {
+    "codigo": "5611203",
+    "nome": "Lanchonetes, casas de chá, de sucos e similares"
+   },
+   {
+    "codigo": "4721102",
+    "nome": "Padaria e confeitaria com predominância de revenda"
+   },
+   {
+    "codigo": "5611201",
+    "nome": "Restaurantes e similares"
+   }
+  ],
+  "portes": [
+   "MEI",
+   "Microempresa",
+   "Empresa de pequeno porte",
+   "Demais",
+   "Não informado"
+  ],
+  "anos": {
+   "primeiro": 1920,
+   "ultimo": 2026
+  }
+ }
+}

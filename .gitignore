@@ -13,3 +13,7 @@ dados/tratados/base_afl.csv
 
 # base enxuta da API: gerada pelo 03_base_api.py a partir da base tratada
 dados/api/
+
+# dashboard: dependências e build
+web/node_modules/
+web/dist/

@@ -1,0 +1,83 @@
+/* Estrutura da página: largura, seções e grades */
+
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Seções ---------- */
+.section { padding: 88px 0; }
+
+.section.band {
+  background: var(--bg-band);
+  border-top: 1px solid #DCEBDF;
+  border-bottom: 1px solid #DCEBDF;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: 24px 56px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--basil);
+}
+
+.eyebrow .num {
+  font-family: 'Funnel Display', sans-serif;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: var(--basil-soft);
+  color: var(--basil-deep);
+}
+
+.section-head h2 {
+  margin-top: 14px;
+  font-size: clamp(32px, 4.2vw, 50px);
+  font-weight: 700;
+}
+
+.section-head p { font-size: 17px; max-width: 460px; }
+
+/* ---------- Bento de indicadores ---------- */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bento.perfil { grid-template-areas: "hero hero a a" "hero hero c c"; }
+.bento.aberturas { grid-template-areas: "c c hero hero" "a a hero hero"; }
+.bento .big { grid-area: hero; }
+.bento .area-a { grid-area: a; }
+.bento .area-b { grid-area: b; }
+.bento .area-c { grid-area: c; }
+
+/* Dois cartões lado a lado */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+@media (max-width: 960px) {
+  .section-head { grid-template-columns: minmax(0, 1fr); }
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .bento.perfil, .bento.aberturas { grid-template-columns: minmax(0, 1fr); }
+  .bento.perfil { grid-template-areas: "hero" "a" "c"; }
+  .bento.aberturas { grid-template-areas: "hero" "c" "a"; }
+}
+
+@media (max-width: 760px) {
+  .section { padding: 64px 0; }
+}
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .bento { gap: 14px; }
+}
