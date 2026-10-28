@@ -97,6 +97,8 @@ Sem filtro, o dashboard mostra o painel nacional gravado em `web/src/dados/paine
 - **Dashboard**: o workflow `.github/workflows/pages.yml` gera o build e publica no GitHub Pages a cada push em `web/`.
 - **API**: `render.yaml` descreve o serviço no Render (New > Blueprint). A base da API é baixada da release durante o build. Se o endereço final da API for outro, defina a variável `API_URL` em Settings > Variables do repositório.
 
+O que ainda falta fazer está em [`docs/pendencias.md`](docs/pendencias.md).
+
 <details>
 <summary>Como reproduzir a base tratada</summary>
 

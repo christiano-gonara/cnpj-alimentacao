@@ -15,11 +15,9 @@
   border-bottom: 1px solid #DCEBDF;
 }
 
+/* Título e texto empilhados: o texto fica colado no título que ele explica */
 .section-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-  gap: 24px 56px;
-  align-items: end;
+  max-width: 760px;
   margin-bottom: 40px;
 }
 
@@ -46,7 +44,7 @@
   font-weight: 700;
 }
 
-.section-head p { font-size: 17px; max-width: 460px; }
+.section-head p { margin-top: 16px; font-size: 18px; max-width: 620px; }
 
 /* ---------- Bento de indicadores ---------- */
 .bento {
@@ -66,7 +64,6 @@
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
 @media (max-width: 960px) {
-  .section-head { grid-template-columns: minmax(0, 1fr); }
   .duo { grid-template-columns: minmax(0, 1fr); }
   .bento.perfil, .bento.aberturas { grid-template-columns: minmax(0, 1fr); }
   .bento.perfil { grid-template-areas: "hero" "a" "c"; }
