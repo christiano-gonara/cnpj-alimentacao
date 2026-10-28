@@ -24,16 +24,16 @@
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 10px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--basil);
 }
 
 .eyebrow .num {
   font-family: 'Funnel Display', sans-serif;
-  padding: 1px 8px;
-  border-radius: 6px;
+  padding: 2px 10px;
+  border-radius: 8px;
   background: var(--basil-soft);
   color: var(--basil-deep);
 }

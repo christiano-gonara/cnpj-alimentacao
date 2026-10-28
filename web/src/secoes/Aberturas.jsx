@@ -1,9 +1,10 @@
 import Cabecalho from '../componentes/Cabecalho.jsx';
 import GraficoAberturas from '../componentes/GraficoAberturas.jsx';
 import Revelar from '../componentes/Revelar.jsx';
+import { urlPublica } from '../lib/caminhos.js';
 import { fmtGrande, fmtInteiro, fmtMoeda } from '../lib/formatos.js';
 
-const FOTO = `${import.meta.env.BASE_URL}assets/foto-restaurante.jpg`;
+const FOTO = urlPublica('assets/foto-restaurante.jpg');
 
 const diasNoPeriodo = (de, ate) => (Date.UTC(ate + 1, 0, 1) - Date.UTC(de, 0, 1)) / 864e5;
 

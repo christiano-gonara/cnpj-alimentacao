@@ -68,6 +68,8 @@
   opacity: 0.55;
 }
 
+.card.big .label { font-size: 17px; letter-spacing: 0.05em; color: var(--body); }
+.card.big .tag { font-size: 14px; padding: 5px 12px; }
 .card.big .value { font-size: clamp(64px, 8vw, 104px); }
 .card.big .detail { font-size: 18px; }
 .card.big .sub { font-size: 15px; color: var(--body); }
