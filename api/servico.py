@@ -158,7 +158,8 @@ class IndicadoresServico:
             aberturas=self.aberturas(filtros, periodo),
             variacao=self.variacao(regiao, filtros, periodo, 8),
             saldo=self.saldo(filtros, periodo),
-            sobrevivencia=self.sobrevivencia(filtros, Periodo(2015, periodo.ano_ate)),
+            # Mesmo período do saldo, ao lado no dashboard: os dois cartões ficam do mesmo tamanho
+            sobrevivencia=self.sobrevivencia(filtros, periodo),
             historico_ignora_porte=filtros.porte is not None,
         )
 

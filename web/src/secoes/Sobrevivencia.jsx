@@ -51,7 +51,7 @@ export default function Sobrevivencia({ painel }) {
             <Ranking itens={linhas} compacto numerado={false} />
             {mediana != null && (
               <p className="sub">
-                Entre os que já fecharam, a mediana foi de {fmtDecimal(mediana)} {mediana === 1 ? 'ano' : 'anos'} de portas abertas.
+                Entre os abertos desde {maisAntiga.ano} que já fecharam, a mediana foi de {fmtDecimal(mediana)} {mediana < 2 ? 'ano' : 'anos'} de portas abertas.
               </p>
             )}
           </Revelar>
