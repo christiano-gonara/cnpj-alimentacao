@@ -7,7 +7,6 @@ import { fmtDecimal, fmtInteiro, fmtPct, fmtVariacao, variacaoPercentual } from 
 import { ATIVIDADES_NA_FRASE, ESTADOS } from '../lib/nomes.js';
 import './Hero.css';
 
-const asset = (nome) => `${import.meta.env.BASE_URL}assets/${nome}`;
 const fmtAberturas = (n) => (n >= 1000 ? `${fmtDecimal(n / 1e3)} mil` : fmtInteiro(n));
 
 /** Abertura da página. Sempre mostra o Brasil inteiro: é a apresentação, não o recorte. */
@@ -68,19 +67,18 @@ export default function Hero({ painel }) {
             </div>
           </div>
 
-          <img className="emoji emoji-cerveja" src={asset('emoji/cerveja.png')} alt="" width="256" height="256" />
-          <img className="emoji emoji-prato" src={asset('emoji/prato.png')} alt="" width="256" height="256" />
-
-          <div className="float-chip chip-a" aria-hidden="true">
-            <span className="ico"><Tendencia strokeWidth={2.2} /></span>
-            <span>
-              <strong>{fmtVariacao(variacao)} em {ultimo.ano}</strong>
-              {variacao >= 0 ? 'retomada das aberturas' : 'queda nas aberturas'}
-            </span>
-          </div>
-          <div className="float-chip chip-b" aria-hidden="true">
-            <span className="ico"><Flag strokeWidth={2.2} /></span>
-            <span><strong>Pico em {pico.ano}</strong>{fmtAberturas(pico.aberturas)} aberturas</span>
+          <div className="hero-destaques">
+            <div className="destaque">
+              <span className="ico"><Tendencia strokeWidth={2.2} /></span>
+              <span>
+                <strong>{fmtVariacao(variacao)} em {ultimo.ano}</strong>
+                {variacao >= 0 ? 'retomada das aberturas' : 'queda nas aberturas'}
+              </span>
+            </div>
+            <div className="destaque destaque-pico">
+              <span className="ico"><Flag strokeWidth={2.2} /></span>
+              <span><strong>Pico em {pico.ano}</strong>{fmtAberturas(pico.aberturas)} aberturas</span>
+            </div>
           </div>
         </Revelar>
       </div>
