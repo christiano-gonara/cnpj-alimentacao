@@ -4,13 +4,15 @@
 def test_resumo_conta_empresa_uma_vez_e_estabelecimentos_separados(cliente):
     resposta = cliente.get("/indicadores/resumo").json()
     assert resposta == {"empresas_ativas": 3, "estabelecimentos_ativos": 4,
-                        "estabelecimentos_registrados": 7}
+                        "estabelecimentos_registrados": 7, "percentual_matriz": 75.0,
+                        "capital_social_mediana": 3000.0, "capital_social_p90": 20000.0}
 
 
 def test_filtros_se_combinam(cliente):
     assert cliente.get("/indicadores/resumo?uf=sp").json()["estabelecimentos_ativos"] == 3
-    assert cliente.get("/indicadores/resumo?uf=SP&porte=MEI").json() == {
-        "empresas_ativas": 1, "estabelecimentos_ativos": 2, "estabelecimentos_registrados": 3}
+    resposta = cliente.get("/indicadores/resumo?uf=SP&porte=MEI").json()
+    assert (resposta["empresas_ativas"], resposta["estabelecimentos_ativos"],
+            resposta["estabelecimentos_registrados"]) == (1, 2, 3)
 
 
 def test_aberturas_preenche_ano_sem_abertura_com_zero(cliente):
@@ -84,3 +86,21 @@ def test_entradas_invalidas_viram_422(cliente):
     assert cliente.get("/indicadores/resumo?municipio=1;DROP").status_code == 422
     assert cliente.get("/indicadores/aberturas?ano_de=2025&ano_ate=2020").status_code == 422
     assert cliente.get("/rankings/cep").status_code == 422
+
+
+def test_variacao_entre_primeiro_e_ultimo_ano(cliente):
+    resposta = cliente.get("/rankings/estado/variacao?ano_de=2021&ano_ate=2023").json()
+    # SP: 3 aberturas em 2021 e nenhuma em 2023; PR: nenhuma em 2021, sem base de comparação
+    assert [(v["codigo"], v["inicio"], v["fim"], v["variacao_percentual"]) for v in resposta] == [
+        ("PR", 0, 2, None), ("SP", 3, 0, -100.0)]
+
+
+def test_painel_desce_para_municipios_quando_ha_uf(cliente):
+    nacional = cliente.get("/painel").json()
+    assert nacional["lideres_por"] == "estado"
+    assert nacional["resumo"]["estabelecimentos_ativos"] == 4
+    assert [a["aberturas"] for a in nacional["aberturas"]] == [3, 1, 2, 1, 0]
+
+    parana = cliente.get("/painel?uf=PR").json()
+    assert parana["lideres_por"] == "municipio"
+    assert [l["nome"] for l in parana["lideres"]] == ["CURITIBA"]

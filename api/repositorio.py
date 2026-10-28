@@ -70,7 +70,12 @@ class EstabelecimentoRepositorio:
             SELECT
                 count(DISTINCT cnpj_basico) FILTER (WHERE situacao = 'Ativa') AS empresas_ativas,
                 count(*) FILTER (WHERE situacao = 'Ativa')                  AS estabelecimentos_ativos,
-                count(*)                                                    AS estabelecimentos_registrados
+                count(*)                                                    AS estabelecimentos_registrados,
+                round(100 * avg((matriz_filial = 'Matriz')::INTEGER)
+                    FILTER (WHERE situacao = 'Ativa'), 1)                   AS percentual_matriz,
+                median(capital_social) FILTER (WHERE situacao = 'Ativa')    AS capital_social_mediana,
+                quantile_disc(capital_social, 0.9)
+                    FILTER (WHERE situacao = 'Ativa')                       AS capital_social_p90
             FROM base WHERE {trecho}
         """, parametros)[0]
 
@@ -157,6 +162,23 @@ class EstabelecimentoRepositorio:
             WHERE {trecho} AND situacao = 'Ativa' AND {coluna} IS NOT NULL
             GROUP BY 1 ORDER BY 3 DESC, 2 LIMIT ?
         """, [*parametros, limite])
+
+    def aberturas_inicio_e_fim_por(self, dimensao: str, filtros: Filtros, periodo: Periodo,
+                                   limite: int) -> list[dict]:
+        """Aberturas no primeiro e no último ano do período, nos maiores do último ano."""
+        coluna, nome = DIMENSOES[dimensao]
+        trecho, parametros = filtros.para_sql()
+        return self._linhas(f"""
+            SELECT
+                {coluna}                                              AS codigo,
+                {nome}                                                AS nome,
+                count(*) FILTER (WHERE ano_inicio = ?)                AS inicio,
+                count(*) FILTER (WHERE ano_inicio = ?)                AS fim
+            FROM base
+            WHERE {trecho} AND ano_inicio IN (?, ?) AND {coluna} IS NOT NULL
+            GROUP BY 1 ORDER BY 4 DESC, 1 LIMIT ?
+        """, [periodo.ano_de, periodo.ano_ate, *parametros, periodo.ano_de, periodo.ano_ate,
+              limite])
 
     def palavras_nome_fantasia(self, filtros: Filtros, ignorar: list[str],
                                limite: int) -> list[dict]:

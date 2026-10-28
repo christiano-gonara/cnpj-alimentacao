@@ -8,23 +8,23 @@ from api.config import Config
 from api.main import criar_app
 
 # (cnpj_basico, situacao, data_inicio, data_fechamento, motivo, atividade, uf, municipio,
-#  bairro, porte, nome_fantasia)
+#  bairro, porte, nome_fantasia, matriz_filial, capital_social)
 LINHAS = [
     # empresa 1: matriz e filial ativas em SP; conta 1 empresa e 2 estabelecimentos
     ("1", "Ativa", "2021-03-01", None, None, "5611201", "SP", "7107", "PINHEIROS", "MEI",
-     "BAR DO ZE"),
+     "BAR DO ZE", "Matriz", 1000),
     ("1", "Ativa", "2022-05-01", None, None, "5611201", "SP", "7107", "PINHEIROS", "MEI",
-     "BAR DO ZE"),
+     "BAR DO ZE", "Filial", 1000),
     ("2", "Ativa", "2021-07-01", None, None, "5611204", "SP", "7107", "CENTRO",
-     "Microempresa", "BAR DA PRACA LTDA"),
+     "Microempresa", "BAR DA PRACA LTDA", "Matriz", 5000),
     ("3", "Baixada", "2021-01-10", "2022-01-10", "EXTINCAO VOLUNTARIA", "5611204", "SP",
-     "7107", "CENTRO", "MEI", "LANCHES-DA-ANA"),
+     "7107", "CENTRO", "MEI", "LANCHES-DA-ANA", "Matriz", 0),
     ("4", "Baixada", "2023-02-01", "2023-08-01", "EXTINCAO VOLUNTARIA", "5611201", "PR",
-     "7535", "CENTRO", "Microempresa", "RESTAURANTE SABOR"),
+     "7535", "CENTRO", "Microempresa", "RESTAURANTE SABOR", "Matriz", 500),
     ("5", "Inapta", "2023-06-01", None, None, "5611201", "PR", "7535", "BATEL", "MEI",
-     None),
+     None, "Matriz", 0),
     ("6", "Ativa", "2024-09-01", None, None, "5611201", "PR", "7535", "BATEL", "MEI",
-     "PIZZARIA SABOR"),
+     "PIZZARIA SABOR", "Matriz", 20000),
 ]
 
 
@@ -36,9 +36,10 @@ def caminho_base(tmp_path_factory):
         CREATE TABLE base (
             cnpj_basico VARCHAR, situacao VARCHAR, data_inicio DATE, data_fechamento DATE,
             motivo_fechamento VARCHAR, atividade_codigo VARCHAR, uf VARCHAR,
-            municipio_codigo VARCHAR, bairro VARCHAR, porte VARCHAR, nome_fantasia VARCHAR)
+            municipio_codigo VARCHAR, bairro VARCHAR, porte VARCHAR, nome_fantasia VARCHAR,
+            matriz_filial VARCHAR, capital_social DECIMAL(18, 2))
     """)
-    con.executemany("INSERT INTO base VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", LINHAS)
+    con.executemany("INSERT INTO base VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", LINHAS)
     con.execute(f"""
         COPY (
             SELECT *,

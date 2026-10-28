@@ -1,5 +1,7 @@
 """Formato das respostas. O FastAPI usa estas classes para validar a saída e gerar o /docs."""
 
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -30,6 +32,11 @@ class Resumo(BaseModel):
     estabelecimentos_ativos: int
     estabelecimentos_registrados: int = Field(
         description="inclui baixados, inaptos, suspensos e nulos")
+    percentual_matriz: float | None = Field(
+        description="estabelecimentos ativos que são matriz, não filial")
+    capital_social_mediana: float | None
+    capital_social_p90: float | None = Field(
+        description="90% dos estabelecimentos ativos declaram até este capital")
 
 
 class AberturasNoAno(BaseModel):
@@ -64,6 +71,28 @@ class ItemRanking(BaseModel):
     nome: str
     total: int
     percentual: float
+
+
+class Variacao(BaseModel):
+    codigo: str
+    nome: str
+    inicio: int = Field(description="aberturas no primeiro ano do período")
+    fim: int = Field(description="aberturas no último ano do período")
+    variacao_percentual: float | None
+
+
+class Painel(BaseModel):
+    """Tudo o que o dashboard mostra, numa requisição só."""
+
+    resumo: Resumo
+    porte: list[ItemRanking]
+    lideres_por: Literal["estado", "municipio"]
+    lideres: list[ItemRanking]
+    atividades: list[ItemRanking]
+    aberturas: list[AberturasNoAno]
+    variacao: list[Variacao]
+    saldo: list[SaldoDoAno]
+    sobrevivencia: Sobrevivencia
 
 
 class Palavra(BaseModel):

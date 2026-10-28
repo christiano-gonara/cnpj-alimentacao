@@ -4,8 +4,8 @@ from functools import lru_cache
 from typing import Protocol
 
 from api.filtros import PORTES, Filtros, Periodo
-from api.modelos import (AberturasNoAno, Coorte, FaixaDeAnos, ItemRanking, Opcoes, Palavra,
-                         Resumo, SaldoDoAno, Sobrevivencia)
+from api.modelos import (AberturasNoAno, Coorte, FaixaDeAnos, ItemRanking, Opcoes, Painel,
+                         Palavra, Resumo, SaldoDoAno, Sobrevivencia, Variacao)
 
 # Palavras que aparecem em quase todo nome fantasia e não dizem nada sobre o negócio.
 PALAVRAS_IGNORADAS = [
@@ -30,6 +30,8 @@ class Repositorio(Protocol):
                            limite: int) -> list[dict]: ...
     def empresas_ativas_por_porte(self, filtros: Filtros) -> list[dict]: ...
     def ativos_por(self, dimensao: str, filtros: Filtros, limite: int) -> list[dict]: ...
+    def aberturas_inicio_e_fim_por(self, dimensao: str, filtros: Filtros, periodo: Periodo,
+                                   limite: int) -> list[dict]: ...
     def palavras_nome_fantasia(self, filtros: Filtros, ignorar: list[str],
                                limite: int) -> list[dict]: ...
 
@@ -111,6 +113,41 @@ class IndicadoresServico:
     @lru_cache(maxsize=1024)
     def ranking(self, dimensao: str, filtros: Filtros, limite: int) -> list[ItemRanking]:
         return _ranking(self._repo.ativos_por(dimensao, filtros, limite))
+
+    @lru_cache(maxsize=512)
+    def variacao(self, dimensao: str, filtros: Filtros, periodo: Periodo,
+                 limite: int) -> list[Variacao]:
+        """Quem mais abriu no último ano do período e quanto isso mudou desde o primeiro."""
+        itens = [
+            Variacao(**linha, variacao_percentual=(
+                round(100 * (linha["fim"] - linha["inicio"]) / linha["inicio"], 1)
+                if linha["inicio"] else None))
+            for linha in self._repo.aberturas_inicio_e_fim_por(dimensao, filtros, periodo,
+                                                               limite)
+        ]
+        return sorted(itens, key=lambda item: item.variacao_percentual or 0, reverse=True)
+
+    @lru_cache(maxsize=512)
+    def painel(self, filtros: Filtros) -> Painel:
+        """
+        Junta os indicadores do dashboard numa resposta só.
+
+        Com um estado filtrado, ranking e variação por estado teriam uma linha só; nesse caso
+        o recorte desce para os municípios daquele estado.
+        """
+        regiao = "municipio" if filtros.uf else "estado"
+        periodo = Periodo()
+        return Painel(
+            resumo=self.resumo(filtros),
+            porte=self.porte(filtros),
+            lideres_por=regiao,
+            lideres=self.ranking(regiao, filtros, 2),
+            atividades=self.ranking("atividade", filtros, 6),
+            aberturas=self.aberturas(filtros, periodo),
+            variacao=self.variacao(regiao, filtros, periodo, 8),
+            saldo=self.saldo(filtros, periodo),
+            sobrevivencia=self.sobrevivencia(filtros, Periodo(2015, periodo.ano_ate)),
+        )
 
     @lru_cache(maxsize=512)
     def nomes(self, filtros: Filtros, limite: int) -> list[Palavra]:

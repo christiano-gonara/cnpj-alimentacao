@@ -45,6 +45,10 @@ def main() -> None:
                 municipio,
                 uf,
                 natureza_juridica_desc                                    AS natureza_juridica,
+                -- Bases geradas antes da correção do 02 têm o capital como texto com
+                -- vírgula; passar por VARCHAR converte as duas versões do mesmo jeito.
+                try_cast(replace(CAST(capital_social AS VARCHAR), ',', '.')
+                         AS DECIMAL(18, 2))                               AS capital_social,
                 -- MEI é regime tributário, não porte; para quem lê, porém, é uma categoria
                 -- de tamanho, então ele substitui o porte quando a empresa é MEI.
                 CASE WHEN mei = 'MEI' THEN 'MEI' ELSE porte END           AS porte
