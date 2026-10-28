@@ -104,3 +104,13 @@ def test_painel_desce_para_municipios_quando_ha_uf(cliente):
     parana = cliente.get("/painel?uf=PR").json()
     assert parana["lideres_por"] == "municipio"
     assert [l["nome"] for l in parana["lideres"]] == ["CURITIBA"]
+
+
+def test_historico_ignora_porte_porque_o_porte_e_o_de_hoje(cliente):
+    sem_filtro = cliente.get("/indicadores/saldo").json()
+    so_mei = cliente.get("/indicadores/saldo?porte=MEI").json()
+    assert so_mei == sem_filtro
+    painel = cliente.get("/painel?porte=MEI").json()
+    assert painel["historico_ignora_porte"] is True
+    # o que é foto de hoje continua filtrado
+    assert painel["resumo"]["estabelecimentos_ativos"] == 3

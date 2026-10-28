@@ -93,6 +93,9 @@ class Painel(BaseModel):
     variacao: list[Variacao]
     saldo: list[SaldoDoAno]
     sobrevivencia: Sobrevivencia
+    historico_ignora_porte: bool = Field(
+        description="aberturas, variação, saldo e sobrevivência não usam o filtro de porte: "
+                    "o porte gravado é o de hoje, e quem fechou já mudou de porte")
 
 
 class Palavra(BaseModel):

@@ -1,5 +1,6 @@
 """Regras de negócio: transforma as contagens do repositório nos indicadores da API."""
 
+from dataclasses import replace
 from functools import lru_cache
 from typing import Protocol
 
@@ -34,6 +35,15 @@ class Repositorio(Protocol):
                                    limite: int) -> list[dict]: ...
     def palavras_nome_fantasia(self, filtros: Filtros, ignorar: list[str],
                                limite: int) -> list[dict]: ...
+
+
+def _sem_porte(filtros: Filtros) -> Filtros:
+    """
+    O porte gravado é o de hoje: quem fecha sai do MEI e muda de porte no cadastro. Filtrar
+    aberturas antigas ou fechamentos por porte contaria só os sobreviventes (das empresas
+    marcadas como MEI, quase nenhuma aparece baixada). Por isso o histórico ignora o porte.
+    """
+    return replace(filtros, porte=None)
 
 
 def _percentual(parte: int, total: int) -> float:
@@ -73,7 +83,7 @@ class IndicadoresServico:
 
     @lru_cache(maxsize=512)
     def aberturas(self, filtros: Filtros, periodo: Periodo) -> list[AberturasNoAno]:
-        por_ano = self._repo.aberturas_por_ano(filtros, periodo)
+        por_ano = self._repo.aberturas_por_ano(_sem_porte(filtros), periodo)
         # Ano sem nenhuma abertura não vem do banco; aparece com zero para o gráfico não
         # pular o ano.
         return [AberturasNoAno(ano=ano, aberturas=por_ano.get(ano, 0))
@@ -81,6 +91,7 @@ class IndicadoresServico:
 
     @lru_cache(maxsize=512)
     def saldo(self, filtros: Filtros, periodo: Periodo) -> list[SaldoDoAno]:
+        filtros = _sem_porte(filtros)
         aberturas = self._repo.aberturas_por_ano(filtros, periodo)
         fechamentos = self._repo.fechamentos_por_ano(filtros, periodo)
         return [
@@ -92,6 +103,7 @@ class IndicadoresServico:
 
     @lru_cache(maxsize=512)
     def sobrevivencia(self, filtros: Filtros, periodo: Periodo) -> Sobrevivencia:
+        filtros = _sem_porte(filtros)
         dias = self._repo.mediana_dias_ate_fechar(filtros, periodo)
         coortes = [
             Coorte(**linha, percentual_ativos=_percentual(linha["ativos"], linha["abertos"]))
@@ -104,7 +116,7 @@ class IndicadoresServico:
     @lru_cache(maxsize=512)
     def motivos_fechamento(self, filtros: Filtros, periodo: Periodo,
                            limite: int) -> list[ItemRanking]:
-        return _ranking(self._repo.motivos_fechamento(filtros, periodo, limite))
+        return _ranking(self._repo.motivos_fechamento(_sem_porte(filtros), periodo, limite))
 
     @lru_cache(maxsize=512)
     def porte(self, filtros: Filtros) -> list[ItemRanking]:
@@ -122,8 +134,8 @@ class IndicadoresServico:
             Variacao(**linha, variacao_percentual=(
                 round(100 * (linha["fim"] - linha["inicio"]) / linha["inicio"], 1)
                 if linha["inicio"] else None))
-            for linha in self._repo.aberturas_inicio_e_fim_por(dimensao, filtros, periodo,
-                                                               limite)
+            for linha in self._repo.aberturas_inicio_e_fim_por(dimensao, _sem_porte(filtros),
+                                                               periodo, limite)
         ]
         return sorted(itens, key=lambda item: item.variacao_percentual or 0, reverse=True)
 
@@ -147,6 +159,7 @@ class IndicadoresServico:
             variacao=self.variacao(regiao, filtros, periodo, 8),
             saldo=self.saldo(filtros, periodo),
             sobrevivencia=self.sobrevivencia(filtros, Periodo(2015, periodo.ano_ate)),
+            historico_ignora_porte=filtros.porte is not None,
         )
 
     @lru_cache(maxsize=512)
