@@ -37,8 +37,8 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 ## Estrutura
 
-- [`web/`](web): dashboard executivo, uma página estática publicada no GitHub Pages.
-- [`scripts/`](scripts): pipeline de dados. `01_ingestao.py` converte os arquivos da Receita, `02_tratamento.py` limpa, junta e gera a base do setor, `03_base_api.py` gera a versão enxuta que a API consulta.
+- [`web/`](web): dashboard em React + Vite, publicado no GitHub Pages. `src/secoes/` tem os blocos da página, `src/componentes/` as peças reaproveitáveis (cada uma com seu CSS ao lado) e `src/estilos/` as camadas globais (tokens, base, layout).
+- [`scripts/`](scripts): pipeline de dados. `01_ingestao.py` converte os arquivos da Receita, `02_tratamento.py` limpa, junta e gera a base do setor, `03_base_api.py` gera a versão enxuta que a API consulta, `04_painel_web.py` grava o painel nacional que o dashboard mostra sem esperar a API.
 - [`api/`](api): API em FastAPI, em camadas (rotas, serviço, repositório).
 - [`tests/`](tests): testes da API sobre uma base pequena com números conhecidos.
 - [`dados/amostra/amostra_base_afl.csv`](dados/amostra/amostra_base_afl.csv): amostra pública com 20 mil linhas.
@@ -56,8 +56,11 @@ Indicadores do setor com filtros, servidos a partir da base tratada. Devolve só
 
 Todos os endpoints de indicadores e rankings aceitam os filtros `uf`, `municipio` (código da Receita), `atividade` (CNAE) e `porte` (`MEI`, `Microempresa`, `Empresa de pequeno porte`, `Demais`). Os de série aceitam também `ano_de` e `ano_ate` (padrão 2021 a 2025).
 
+Aberturas, fechamentos, variação e sobrevivência **ignoram o filtro de porte**: o porte gravado no cadastro é o de hoje, e quem fecha sai do MEI. Filtrar o histórico por porte contaria só os sobreviventes.
+
 | Endpoint | O que responde |
 |---|---|
+| `GET /painel` | tudo o que o dashboard mostra, numa requisição só |
 | `GET /opcoes` e `/opcoes/municipios?uf=` | valores aceitos em cada filtro |
 | `GET /indicadores/resumo` | empresas e estabelecimentos ativos |
 | `GET /indicadores/aberturas` | aberturas por ano |
@@ -66,6 +69,7 @@ Todos os endpoints de indicadores e rankings aceitam os filtros `uf`, `municipio
 | `GET /indicadores/motivos-fechamento` | por que as empresas fecharam |
 | `GET /indicadores/porte` | empresas ativas por porte |
 | `GET /rankings/{estado,municipio,atividade,bairro}` | estabelecimentos ativos por dimensão (bairro exige `municipio`) |
+| `GET /rankings/{estado,municipio,atividade}/variacao` | aberturas no primeiro e no último ano, nos que mais abriram |
 | `GET /nomes` | palavras mais usadas no nome fantasia |
 
 Exemplo: bares sem entretenimento abertos no Paraná, `/indicadores/aberturas?uf=PR&atividade=5611204`. A documentação interativa fica em `/docs`.
@@ -77,6 +81,21 @@ python3 -m venv .venv
 .venv/bin/uvicorn api.main:criar_app --factory --reload
 .venv/bin/pytest                                # não precisa da base real
 ```
+
+## Dashboard
+
+```bash
+cd web
+npm install
+npm run dev        # http://localhost:5173, usando a API local da porta 8000
+```
+
+Sem filtro, o dashboard mostra o painel nacional gravado em `web/src/dados/painel-nacional.json` (regerado com `scripts/04_painel_web.py`). Com filtro, consulta a API. O recorte fica no endereço, então dá para compartilhar o link de um recorte pronto (`?uf=PR&porte=MEI`).
+
+## Deploy
+
+- **Dashboard**: o workflow `.github/workflows/pages.yml` gera o build e publica no GitHub Pages a cada push em `web/`.
+- **API**: `render.yaml` descreve o serviço no Render (New > Blueprint). A base da API é baixada da release durante o build. Se o endereço final da API for outro, defina a variável `API_URL` em Settings > Variables do repositório.
 
 <details>
 <summary>Como reproduzir a base tratada</summary>
