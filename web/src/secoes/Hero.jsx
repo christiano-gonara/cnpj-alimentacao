@@ -36,8 +36,7 @@ export default function Hero({ painel }) {
           <Revelar como="p" className="kicker"><span><b>Dados abertos</b> da Receita Federal · CNPJ de ago/2026</span></Revelar>
 
           <Revelar como="h1" className="display" atraso="1">
-            Bares <img className="emoji" src={asset('emoji/cerveja.png')} alt="" width="256" height="256" /> e restaurantes{' '}
-            <img className="emoji" src={asset('emoji/prato.png')} alt="" width="256" height="256" /> do Brasil, <span className="marker">em números.</span>
+            Bares e restaurantes do Brasil, <span className="marker">em números.</span>
           </Revelar>
 
           <Revelar como="p" className="hero-lede" atraso="2">
@@ -68,6 +67,9 @@ export default function Hero({ painel }) {
               ))}
             </div>
           </div>
+
+          <img className="emoji emoji-cerveja" src={asset('emoji/cerveja.png')} alt="" width="256" height="256" />
+          <img className="emoji emoji-prato" src={asset('emoji/prato.png')} alt="" width="256" height="256" />
 
           <div className="float-chip chip-a" aria-hidden="true">
             <span className="ico"><Tendencia strokeWidth={2.2} /></span>

@@ -22,16 +22,16 @@
 
 .rank li:first-child .pos { color: var(--basil-deep); }
 
-.rank .name { grid-area: name; font-size: 15px; font-weight: 700; color: var(--ink); }
-.rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); }
+.rank .name { grid-area: name; font-size: 16px; font-weight: 700; color: var(--ink); }
+.rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); }
 
-.rank .bar { grid-area: bar; height: 10px; border-radius: 5px; background: var(--line-soft); overflow: hidden; }
-.rank .bar b { display: block; height: 100%; border-radius: 5px; background: var(--basil-mid); }
+.rank .bar { grid-area: bar; height: 20px; border-radius: 8px; background: var(--line-soft); overflow: hidden; }
+.rank .bar b { display: block; height: 100%; border-radius: 8px; background: var(--basil-mid); }
 .rank li:first-child .bar b { background: var(--basil); }
 
 /* Lista longa (uma linha por ano): mesma leitura, menos altura */
 .rank.compacto li { padding: 9px 0; gap: 6px 12px; }
-.rank.compacto .bar { height: 8px; }
+.rank.compacto .bar { height: 14px; }
 
 /* Sem coluna de posição, quando a ordem é a do tempo e não a de tamanho */
 .rank.sem-numero li { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name val" "bar bar"; }

@@ -37,22 +37,28 @@
   margin-top: 28px;
   font-size: clamp(40px, 5.6vw, 68px);
   font-weight: 700;
+  /* Linhas de tamanho parecido, sem palavra sobrando sozinha */
+  text-wrap: balance;
 }
 
-/* Emoji 3D (Fluent Emoji, Microsoft): flutua devagar ao lado do texto */
+/* Emoji 3D (Fluent Emoji, Microsoft): flutua nos cantos livres do cartão, fora do título,
+   para não quebrar a linha do texto. Os cartõezinhos ocupam os outros dois cantos. */
 .emoji {
-  display: inline-block;
-  width: 0.82em;
-  height: 0.82em;
-  margin: 0 0.06em;
-  vertical-align: -0.08em;
+  position: absolute;
+  z-index: 2;
+  font-size: 76px;
+  width: 1em;
+  height: 1em;
   filter: drop-shadow(0 8px 10px rgba(22, 32, 26, 0.16));
+  pointer-events: none;
   --tilt: -8deg;
   animation: flutuar 6s ease-in-out infinite;
 }
 
+.emoji-cerveja { top: -52px; left: -44px; }
+
 /* O segundo inclina para o outro lado e anda em outro ritmo, para não andarem juntos */
-.emoji:last-of-type { --tilt: 7deg; animation-duration: 7.5s; animation-delay: -3s; animation-direction: reverse; }
+.emoji-prato { bottom: -52px; right: -44px; --tilt: 7deg; animation-duration: 7.5s; animation-delay: -3s; animation-direction: reverse; }
 
 /* Deriva em laço: sobe, vai para o lado e desce balançando, inclinado na diagonal */
 @keyframes flutuar {
@@ -235,6 +241,9 @@
 
 @media (max-width: 760px) {
   .hero { padding: 48px 0 72px; }
+  .emoji { font-size: 60px; }
+  .emoji-cerveja { top: -36px; left: -8px; }
+  .emoji-prato { bottom: -36px; right: -8px; }
   .chip-a { right: 8px; }
   .chip-b { left: 8px; }
 }
