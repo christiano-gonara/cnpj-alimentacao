@@ -109,8 +109,11 @@ def montar_base(con) -> None:
             dmot.descricao                                             AS motivo_situacao,
             em.natureza_juridica,
             dn.descricao                                               AS natureza_juridica_desc,
-            em.capital_social,
-            em.porte                                                   AS porte_codigo,
+            -- A Receita grava o capital com vírgula decimal ("93700,00"): vira número aqui
+            -- para somar e comparar sem cada consumidor ter que converter.
+            try_cast(replace(em.capital_social, ',', '.') AS DECIMAL(18, 2))
+                                                                       AS capital_social,
+            em.porte                                                  AS porte_codigo,
             CASE em.porte
                 {' '.join(f"WHEN '{k}' THEN '{v}'" for k, v in PORTE.items())}
                 ELSE 'Não informado' END                               AS porte,
