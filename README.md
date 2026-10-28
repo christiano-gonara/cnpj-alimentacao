@@ -4,7 +4,7 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 [**Abrir dashboard publicado**](https://christiano-gonara.github.io/cnpj-alimentacao/) · [**API e endpoints**](#api) · [**Baixar base tratada (Parquet)**](https://github.com/christiano-gonara/cnpj-alimentacao/releases/latest)
 
-![Tour pelo dashboard](assets/dashboard-tour.gif)
+![Tour pelo dashboard](docs/capturas/dashboard-tour.gif)
 
 ## Capturas de tela
 
@@ -14,16 +14,16 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
     <th>Perfil do setor</th>
   </tr>
   <tr>
-    <td align="center"><img src="assets/01-panorama.png" alt="Topo do dashboard com o total de empresas ativas"></td>
-    <td align="center"><img src="assets/02-perfil.png" alt="Perfil do setor: estabelecimentos, estado líder e porte"></td>
+    <td align="center"><img src="docs/capturas/01-panorama.png" alt="Topo do dashboard com o total de empresas ativas"></td>
+    <td align="center"><img src="docs/capturas/02-perfil.png" alt="Perfil do setor: estabelecimentos, estado líder e porte"></td>
   </tr>
   <tr>
     <th>Aberturas e capital</th>
     <th>Estados e atividades</th>
   </tr>
   <tr>
-    <td align="center"><img src="assets/03-aberturas.png" alt="Série de aberturas de 2021 a 2025 e capital social"></td>
-    <td align="center"><img src="assets/04-estados-atividades.png" alt="Variação das aberturas por estado e ranking por tipo de negócio"></td>
+    <td align="center"><img src="docs/capturas/03-aberturas.png" alt="Série de aberturas de 2021 a 2025 e capital social"></td>
+    <td align="center"><img src="docs/capturas/04-estados-atividades.png" alt="Variação das aberturas por estado e ranking por tipo de negócio"></td>
   </tr>
 </table>
 
@@ -37,7 +37,7 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 
 ## Estrutura
 
-- [`index.html`](index.html): dashboard executivo para leitura rápida, em uma página estática.
+- [`web/`](web): dashboard executivo, uma página estática publicada no GitHub Pages.
 - [`scripts/`](scripts): pipeline de dados. `01_ingestao.py` converte os arquivos da Receita, `02_tratamento.py` limpa, junta e gera a base do setor, `03_base_api.py` gera a versão enxuta que a API consulta.
 - [`api/`](api): API em FastAPI, em camadas (rotas, serviço, repositório).
 - [`tests/`](tests): testes da API sobre uma base pequena com números conhecidos.
