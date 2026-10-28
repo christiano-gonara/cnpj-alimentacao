@@ -14,3 +14,6 @@ dados/tratados/base_afl.csv
 
 # exportação gerada do Jupyter: a entrega técnica versionada é o .ipynb
 notebooks/analise_cnpj.html
+
+# base enxuta da API: gerada pelo 03_base_api.py a partir da base tratada
+dados/api/
