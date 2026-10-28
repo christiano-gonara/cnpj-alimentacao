@@ -1,0 +1,4 @@
+# API (o que o deploy precisa)
+duckdb==2.0.0
+fastapi==0.162.0
+uvicorn==0.54.0

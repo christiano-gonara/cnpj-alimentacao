@@ -1,0 +1,7 @@
+-r requirements.txt
+# pipeline de dados
+pandas==3.1.0
+pyarrow==26.0.0
+# testes
+pytest==9.2.0
+httpx==0.28.1
