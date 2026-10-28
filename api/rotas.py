@@ -75,26 +75,26 @@ def resumo(s: Servico, f: FiltrosDep) -> Resumo:
 
 @rotas.get("/indicadores/aberturas", tags=["indicadores"])
 def aberturas(s: Servico, f: FiltrosDep, p: PeriodoDep) -> list[AberturasNoAno]:
-    """Estabelecimentos abertos por ano."""
+    """Estabelecimentos abertos por ano. Ignora o filtro de porte (é o porte de hoje)."""
     return s.aberturas(f, p)
 
 
 @rotas.get("/indicadores/saldo", tags=["indicadores"])
 def saldo(s: Servico, f: FiltrosDep, p: PeriodoDep) -> list[SaldoDoAno]:
-    """Aberturas menos fechamentos (baixas) por ano: mostra se o setor cresce ou só gira."""
+    """Aberturas menos fechamentos (baixas) por ano. Ignora o filtro de porte."""
     return s.saldo(f, p)
 
 
 @rotas.get("/indicadores/sobrevivencia", tags=["indicadores"])
 def sobrevivencia(s: Servico, f: FiltrosDep, p: PeriodoDep) -> Sobrevivencia:
-    """Dos abertos em cada ano, quantos seguem ativos hoje."""
+    """Dos abertos em cada ano, quantos seguem ativos hoje. Ignora o filtro de porte."""
     return s.sobrevivencia(f, p)
 
 
 @rotas.get("/indicadores/motivos-fechamento", tags=["indicadores"])
 def motivos_fechamento(s: Servico, f: FiltrosDep, p: PeriodoDep,
                        limite: Limite = 10) -> list[ItemRanking]:
-    """Motivos das baixas ocorridas no período."""
+    """Motivos das baixas ocorridas no período. Ignora o filtro de porte."""
     return s.motivos_fechamento(f, p, limite)
 
 
@@ -121,7 +121,7 @@ def ranking(s: Servico, f: FiltrosDep,
 def variacao(s: Servico, f: FiltrosDep, p: PeriodoDep,
              dimensao: Literal["estado", "municipio", "atividade"],
              limite: Limite = 8) -> list[Variacao]:
-    """Os que mais abriram no último ano do período, com a variação desde o primeiro."""
+    """Os que mais abriram no último ano do período, com a variação. Ignora o porte."""
     return s.variacao(dimensao, f, p, limite)
 
 
