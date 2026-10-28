@@ -1,0 +1,22 @@
+/* ---------- Frase-resumo ---------- */
+.summary {
+  padding: 8px 0 88px;
+  text-align: center;
+}
+
+.summary p {
+  max-width: 820px;
+  margin: 0 auto;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: clamp(21px, 2.4vw, 27px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--body);
+  letter-spacing: -0.01em;
+}
+
+.summary strong { color: var(--ink); font-weight: 700; }
+
+@media (max-width: 760px) {
+  .summary { padding-bottom: 64px; }
+}

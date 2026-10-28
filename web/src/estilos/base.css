@@ -1,0 +1,32 @@
+/* Reset, tipografia e foco: vale para a página toda */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+body {
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.display {
+  font-family: 'Funnel Display', 'Figtree', sans-serif;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--basil);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Legenda e valores pequenos, usados em mais de um gráfico */
+.pct { font-size: 13.5px; font-weight: 500; color: var(--muted); }

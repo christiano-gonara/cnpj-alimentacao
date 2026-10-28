@@ -1,0 +1,37 @@
+.rank { list-style: none; display: flex; flex-direction: column; flex: 1 1 auto; justify-content: space-between; }
+
+.rank li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  grid-template-areas: "pos name val" "pos bar bar";
+  gap: 8px 12px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.rank li:last-child { border-bottom: 0; }
+
+.rank .pos {
+  grid-area: pos;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.rank li:first-child .pos { color: var(--basil-deep); }
+
+.rank .name { grid-area: name; font-size: 15px; font-weight: 700; color: var(--ink); }
+.rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); }
+
+.rank .bar { grid-area: bar; height: 10px; border-radius: 5px; background: var(--line-soft); overflow: hidden; }
+.rank .bar b { display: block; height: 100%; border-radius: 5px; background: var(--basil-mid); }
+.rank li:first-child .bar b { background: var(--basil); }
+
+/* Lista longa (uma linha por ano): mesma leitura, menos altura */
+.rank.compacto li { padding: 9px 0; gap: 6px 12px; }
+.rank.compacto .bar { height: 8px; }
+
+/* Sem coluna de posição, quando a ordem é a do tempo e não a de tamanho */
+.rank.sem-numero li { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name val" "bar bar"; }
