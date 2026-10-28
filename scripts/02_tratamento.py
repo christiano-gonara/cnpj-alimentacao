@@ -179,7 +179,7 @@ def main() -> None:
                 f"TO '{TRATADOS / 'aberturas_por_ano.csv'}' (HEADER, DELIMITER ',')")
 
     # Série do país inteiro (todos os CNAEs), para comparar o peso do setor no total de
-    # aberturas. Fica gravada aqui para o notebook não precisar ler os arquivos brutos.
+    # aberturas. Fica gravada aqui para ninguém precisar ler os arquivos brutos de novo.
     con.execute(f"""
         COPY (
             SELECT year(data_inicio) AS ano, count(*) AS aberturas
