@@ -5,8 +5,8 @@ from typing import Annotated, Literal
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 
 from api.filtros import Filtros, Periodo
-from api.modelos import (AberturasNoAno, ItemRanking, Municipio, Opcoes, Palavra, Resumo,
-                         SaldoDoAno, Sobrevivencia)
+from api.modelos import (AberturasNoAno, ItemRanking, Municipio, Opcoes, Painel, Palavra,
+                         Resumo, SaldoDoAno, Sobrevivencia, Variacao)
 from api.servico import IndicadoresServico
 
 rotas = APIRouter()
@@ -62,6 +62,12 @@ def municipios(s: Servico,
     return s.municipios(uf.upper())
 
 
+@rotas.get("/painel", tags=["dashboard"])
+def painel(s: Servico, f: FiltrosDep) -> Painel:
+    """Tudo o que o dashboard mostra para um recorte, numa requisição só."""
+    return s.painel(f)
+
+
 @rotas.get("/indicadores/resumo", tags=["indicadores"])
 def resumo(s: Servico, f: FiltrosDep) -> Resumo:
     return s.resumo(f)
@@ -109,6 +115,14 @@ def ranking(s: Servico, f: FiltrosDep,
         raise HTTPException(status_code=422,
                             detail="ranking de bairros precisa do filtro municipio")
     return s.ranking(dimensao, f, limite)
+
+
+@rotas.get("/rankings/{dimensao}/variacao", tags=["rankings"])
+def variacao(s: Servico, f: FiltrosDep, p: PeriodoDep,
+             dimensao: Literal["estado", "municipio", "atividade"],
+             limite: Limite = 8) -> list[Variacao]:
+    """Os que mais abriram no último ano do período, com a variação desde o primeiro."""
+    return s.variacao(dimensao, f, p, limite)
 
 
 @rotas.get("/nomes", tags=["rankings"])
