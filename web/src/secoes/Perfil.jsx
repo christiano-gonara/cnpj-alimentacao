@@ -2,11 +2,12 @@ import Barra from '../componentes/Barra.jsx';
 import BarraPorte from '../componentes/BarraPorte.jsx';
 import Cabecalho from '../componentes/Cabecalho.jsx';
 import Revelar from '../componentes/Revelar.jsx';
+import { urlPublica } from '../lib/caminhos.js';
 import { fmtGrande, fmtInteiro, fmtPct } from '../lib/formatos.js';
 import { nomeRegiao, PORTES, siglaOuNome } from '../lib/nomes.js';
 import './Perfil.css';
 
-const FOTO = `${import.meta.env.BASE_URL}assets/foto-cozinha.jpg`;
+const FOTO = urlPublica('assets/foto-cozinha.jpg');
 
 export default function Perfil({ painel, filtros, filtrado }) {
   const { resumo, porte, lideres, lideres_por: por } = painel;
