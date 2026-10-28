@@ -13,9 +13,11 @@ export default function Nav() {
   const [rolou, setRolou] = useState(false);
   const [ativa, setAtiva] = useState(null);
 
-  // Plana no topo, pílula translúcida depois de rolar
+  // Plana no topo, pílula translúcida depois de rolar. São dois limites, não um: ao encolher,
+  // o menu fica 16 px mais baixo e o navegador compensa a rolagem nesses 16 px. Com um limite
+  // só, essa compensação cruzava o limite de volta e o menu ficava crescendo e encolhendo.
   useEffect(() => {
-    const ajustar = () => setRolou(window.scrollY > 24);
+    const ajustar = () => setRolou((antes) => (antes ? window.scrollY > 16 : window.scrollY > 64));
     ajustar();
     window.addEventListener('scroll', ajustar, { passive: true });
     return () => window.removeEventListener('scroll', ajustar);
