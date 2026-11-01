@@ -40,7 +40,7 @@
 
 .section-head h2 {
   margin-top: 14px;
-  font-size: clamp(32px, 4.2vw, 50px);
+  font-size: clamp(32px, 4.2vw, 52px);
   font-weight: 700;
 }
 

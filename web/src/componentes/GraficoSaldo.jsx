@@ -62,7 +62,7 @@ function configuracao(saldo) {
         x: {
           grid: { display: false },
           border: { display: false },
-          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15, weight: '700' }, color: TEXTO },
+          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15.5, weight: '700' }, color: TEXTO },
         },
         y: { display: false, min: 0, max: maior * 1.1 },
       },
