@@ -72,7 +72,7 @@
    e a frase de apoio lerem do mesmo tamanho onde quer que o cartão apareça */
 .card.indicador { padding: 30px; gap: 16px; }
 .card.indicador .label { font-size: 16px; letter-spacing: 0.05em; color: var(--body); }
-.card.indicador .tag { font-size: 14.5px; padding: 5px 12px; }
+.card.indicador .tag { font-size: 16.5px; padding: 6px 14px; }
 .card.indicador .value { font-size: clamp(44px, 5vw, 60px); }
 .card.indicador .detail { font-size: 18px; }
 .card.indicador .sub { font-size: 16px; color: var(--body); margin-top: 4px; }
@@ -90,20 +90,6 @@
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid var(--line);
   backdrop-filter: blur(6px);
-}
-
-.split-thin { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 3px; }
-.split-thin span:first-child { background: var(--basil); border-radius: 6px; }
-.split-thin span:last-child { background: var(--basil-mid); border-radius: 6px; min-width: 6px; }
-
-.split-thin-key {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--body);
 }
 
 .big-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
