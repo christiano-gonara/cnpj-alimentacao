@@ -2,23 +2,23 @@
 
 .diverge-row {
   display: grid;
-  grid-template-columns: minmax(120px, 36%) 1fr 76px;
+  grid-template-columns: minmax(150px, 45%) 1fr 96px;
   align-items: center;
-  gap: 12px;
-  padding: 11px 0;
+  gap: 14px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line-soft);
 }
 
 .diverge-row:last-child { border-bottom: 0; }
 
-.diverge-axis { padding: 0 0 8px; border-bottom: 0; font-size: 15px; font-weight: 700; color: var(--muted); }
+.diverge-axis { padding: 0 0 10px; border-bottom: 0; font-size: 17px; font-weight: 700; color: var(--muted); }
 .diverge-hint { display: flex; justify-content: space-between; }
 .diverge-hint span:last-child { color: var(--basil-deep); }
 
-.diverge-name { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; }
-.diverge-name .pct { display: block; margin-top: 2px; font-size: 15px; }
+.diverge-name { font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.diverge-name .pct { display: block; margin-top: 2px; font-size: 17px; }
 
-.diverge-track { position: relative; height: 26px; }
+.diverge-track { position: relative; height: 34px; }
 
 .diverge-track::before {
   content: '';
@@ -29,14 +29,14 @@
   border-left: 1.5px dashed #BDB9AD;
 }
 
-.diverge-bar { position: absolute; top: 0; height: 100%; border-radius: 8px; }
+.diverge-bar { position: absolute; top: 0; height: 100%; border-radius: 10px; }
 .diverge-bar.pos { left: 50%; background: var(--basil); }
 .diverge-bar.neg { right: 50%; background: var(--neutral-bar); }
 
 .diverge-val {
   text-align: right;
   font-family: 'Funnel Display', sans-serif;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--body);
 }
@@ -44,5 +44,9 @@
 .diverge-val.pos { color: var(--basil-deep); }
 
 @media (max-width: 560px) {
-  .diverge-row { grid-template-columns: minmax(104px, 40%) 1fr 66px; gap: 8px; }
+  .diverge-row { grid-template-columns: minmax(110px, 42%) 1fr 76px; gap: 8px; }
+  .diverge-name { font-size: 17px; }
+  .diverge-name .pct { font-size: 15px; }
+  .diverge-val { font-size: 20px; }
+  .diverge-track { height: 26px; }
 }
