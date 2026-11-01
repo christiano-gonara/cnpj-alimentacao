@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--basil);
 }
@@ -44,7 +44,7 @@
   font-weight: 700;
 }
 
-.section-head p { margin-top: 16px; font-size: 18px; max-width: 620px; }
+.section-head p { margin-top: 16px; font-size: 19px; max-width: 620px; }
 
 /* ---------- Bento de indicadores ---------- */
 .bento {
