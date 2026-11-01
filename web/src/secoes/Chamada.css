@@ -27,7 +27,7 @@
 
 .cta h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; }
 .cta h2 span { color: var(--basil); }
-.cta p { margin-top: 16px; font-size: 17px; max-width: 480px; }
+.cta p { margin-top: 16px; font-size: 18px; max-width: 480px; }
 .cta .hero-actions { margin-top: 28px; }
 
 .cta-steps { list-style: none; display: grid; gap: 12px; }
@@ -40,11 +40,11 @@
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #D3E7D8;
   border-radius: var(--radius-lg);
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--body);
 }
 
-.cta-steps strong { display: block; color: var(--ink); font-size: 15.5px; }
+.cta-steps strong { display: block; color: var(--ink); font-size: 16.5px; }
 
 .cta-steps .ico {
   width: 38px;

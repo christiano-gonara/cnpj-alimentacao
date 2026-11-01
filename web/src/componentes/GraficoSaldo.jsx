@@ -28,7 +28,7 @@ function configuracao(saldo) {
         const { ctx, scales } = chart;
         ctx.save();
         ctx.textAlign = 'center';
-        ctx.font = "700 14px 'Funnel Display', sans-serif";
+        ctx.font = "700 15px 'Funnel Display', sans-serif";
         saldo.forEach((a, i) => {
           const topo = scales.y.getPixelForValue(Math.max(a.aberturas, a.fechamentos));
           ctx.fillStyle = a.saldo >= 0 ? TINTA : TOMATE;
@@ -50,8 +50,8 @@ function configuracao(saldo) {
           backgroundColor: TINTA,
           padding: 12,
           cornerRadius: 10,
-          titleFont: { family: 'Figtree', size: 13, weight: '700' },
-          bodyFont: { family: 'Figtree', size: 13 },
+          titleFont: { family: 'Figtree', size: 14, weight: '700' },
+          bodyFont: { family: 'Figtree', size: 14 },
           callbacks: {
             label: (ctx) => `${ctx.dataset.label}: ${fmtInteiro(ctx.parsed.y)}`,
             footer: (itens) => `Saldo: ${fmtInteiro(saldo[itens[0].dataIndex].saldo)}`,
@@ -62,7 +62,7 @@ function configuracao(saldo) {
         x: {
           grid: { display: false },
           border: { display: false },
-          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15, weight: '700' }, color: TEXTO },
+          ticks: { font: { family: "'Funnel Display', sans-serif", size: 16.5, weight: '700' }, color: TEXTO },
         },
         y: { display: false, min: 0, max: maior * 1.1 },
       },

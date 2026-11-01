@@ -15,7 +15,7 @@
 .card-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
 
 .label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -25,7 +25,7 @@
 .tag {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
   background: var(--line-soft);
@@ -46,8 +46,8 @@
 }
 
 .card-foot { margin-top: auto; }
-.detail { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.35; }
-.sub { font-size: 14px; color: var(--muted); margin-top: 3px; }
+.detail { font-size: 16.5px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.sub { font-size: 15px; color: var(--muted); margin-top: 3px; }
 
 /* Cartão grande: foto no lado direito, texto sempre sobre fundo claro */
 .card.big {
@@ -71,17 +71,17 @@
 /* Cartão de indicador (o pequeno, com um número só): mesma escala em todos, para o número
    e a frase de apoio lerem do mesmo tamanho onde quer que o cartão apareça */
 .card.indicador { padding: 30px; gap: 16px; }
-.card.indicador .label { font-size: 16px; letter-spacing: 0.05em; color: var(--body); }
-.card.indicador .tag { font-size: 14.5px; padding: 5px 12px; }
+.card.indicador .label { font-size: 18px; letter-spacing: 0.05em; color: var(--body); }
+.card.indicador .tag { font-size: 17.5px; padding: 6px 14px; }
 .card.indicador .value { font-size: clamp(44px, 5vw, 60px); }
-.card.indicador .detail { font-size: 18px; }
-.card.indicador .sub { font-size: 16px; color: var(--body); margin-top: 4px; }
+.card.indicador .detail { font-size: 19px; }
+.card.indicador .sub { font-size: 17.5px; color: var(--body); margin-top: 4px; }
 
-.card.big .label { font-size: 17px; letter-spacing: 0.05em; color: var(--body); }
-.card.big .tag { font-size: 16.5px; padding: 6px 14px; }
+.card.big .label { font-size: 18px; letter-spacing: 0.05em; color: var(--body); }
+.card.big .tag { font-size: 17.5px; padding: 6px 14px; }
 .card.big .value { font-size: clamp(64px, 8vw, 104px); }
-.card.big .detail { font-size: 18px; }
-.card.big .sub { font-size: 15px; color: var(--body); }
+.card.big .detail { font-size: 19px; }
+.card.big .sub { font-size: 16.5px; color: var(--body); }
 
 .big-extra {
   margin-top: 6px;
@@ -92,37 +92,23 @@
   backdrop-filter: blur(6px);
 }
 
-.split-thin { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 3px; }
-.split-thin span:first-child { background: var(--basil); border-radius: 6px; }
-.split-thin span:last-child { background: var(--basil-mid); border-radius: 6px; min-width: 6px; }
-
-.split-thin-key {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--body);
-}
-
 .big-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.big-facts dt { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.big-facts dd { margin-top: 4px; font-family: 'Funnel Display', sans-serif; font-size: 24px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+.big-facts dt { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.big-facts dd { margin-top: 4px; font-family: 'Funnel Display', sans-serif; font-size: 25px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 
 /* ---------- Gráficos ---------- */
 .chart-card { padding: 30px; gap: 22px; }
 
 .chart-card h3 {
   font-family: 'Funnel Display', sans-serif;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.015em;
   color: var(--ink);
 }
 
-.chart-card h3 + p { margin-top: 6px; font-size: 14.5px; color: var(--muted); }
+.chart-card h3 + p { margin-top: 6px; font-size: 16.5px; color: var(--muted); }
 
 .chart-box { position: relative; min-height: 300px; flex: 1 1 auto; }
 
@@ -130,6 +116,6 @@
   .card, .chart-card { padding: 22px 20px; border-radius: var(--radius-lg); }
   .card.big { padding: 24px 20px; }
   .card-photo { inset: 0 0 0 30%; opacity: 0.35; }
-  .big-facts dd { font-size: 20px; }
+  .big-facts dd { font-size: 21px; }
   .value { font-size: 34px; }
 }

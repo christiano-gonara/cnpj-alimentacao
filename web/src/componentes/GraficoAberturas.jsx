@@ -72,11 +72,11 @@ function configuracao(anos, valores) {
         ctx.textAlign = 'center';
         chart.getDatasetMeta(0).data.forEach((ponto, i) => {
           const y = ponto.y + (d.abaixo[i] ? 36 : -22);
-          ctx.font = "700 19px 'Funnel Display', sans-serif";
+          ctx.font = "700 20px 'Funnel Display', sans-serif";
           ctx.fillStyle = d.corRotulo[i];
           ctx.fillText(fmtRotulo(valores[i]), ponto.x, y);
           if (d.notas[i]) {
-            ctx.font = "600 14.5px 'Figtree', sans-serif";
+            ctx.font = "600 16.5px 'Figtree', sans-serif";
             ctx.fillStyle = NOTA;
             ctx.fillText(d.notas[i], ponto.x, d.abaixo[i] ? y + 20 : y - 22);
           }
@@ -96,8 +96,8 @@ function configuracao(anos, valores) {
           backgroundColor: '#16201A',
           padding: 12,
           cornerRadius: 10,
-          titleFont: { family: 'Figtree', size: 13, weight: '700' },
-          bodyFont: { family: 'Figtree', size: 13 },
+          titleFont: { family: 'Figtree', size: 14, weight: '700' },
+          bodyFont: { family: 'Figtree', size: 14 },
           displayColors: false,
           callbacks: { label: (ctx) => `${fmtInteiro(ctx.parsed.y)} aberturas` },
         },
@@ -107,7 +107,7 @@ function configuracao(anos, valores) {
           offset: true,
           grid: { display: false },
           border: { display: false },
-          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15, weight: '700' }, color: TEXTO },
+          ticks: { font: { family: "'Funnel Display', sans-serif", size: 16.5, weight: '700' }, color: TEXTO },
         },
         // Folga embaixo para os rótulos que ficam sob a linha
         y: { display: false, min: Math.max(0, menor - folga * 0.8), max: maior + folga * 0.25 },

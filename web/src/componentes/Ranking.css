@@ -16,18 +16,26 @@
   grid-area: pos;
   font-family: 'Funnel Display', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--muted);
 }
 
 .rank li:first-child .pos { color: var(--basil-deep); }
 
-.rank .name { grid-area: name; font-size: 16px; font-weight: 700; color: var(--ink); }
-.rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); }
+.rank .name { grid-area: name; font-size: 17.5px; font-weight: 700; color: var(--ink); }
+.rank .val { grid-area: val; font-family: 'Funnel Display', sans-serif; font-size: 19px; font-weight: 700; color: var(--ink); }
 
 .rank .bar { grid-area: bar; height: 20px; border-radius: 8px; background: var(--line-soft); overflow: hidden; }
 .rank .bar b { display: block; height: 100%; border-radius: 8px; background: var(--basil-mid); }
 .rank li:first-child .bar b { background: var(--basil); }
+
+/* Ranking principal (poucas linhas num cartão alto): barra grossa ocupa a altura do cartão */
+.rank:not(.compacto) .bar { height: 34px; border-radius: 10px; }
+.rank:not(.compacto) .bar b { border-radius: 10px; }
+
+@media (max-width: 560px) {
+  .rank:not(.compacto) .bar { height: 26px; }
+}
 
 /* Lista longa (uma linha por ano): mesma leitura, menos altura */
 .rank.compacto li { padding: 9px 0; gap: 6px 12px; }

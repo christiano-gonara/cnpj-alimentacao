@@ -15,7 +15,7 @@
   border-radius: 12px;
   font-family: 'Funnel Display', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 21px;
   color: #fff;
   min-width: 8px;
   overflow: hidden;
@@ -24,17 +24,17 @@
 
 .split-key { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
 
-.split-key-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink); }
+.split-key-item { display: flex; align-items: flex-start; gap: 10px; font-size: 16.5px; color: var(--ink); }
 .split-key-item strong { display: block; font-weight: 700; }
-.split-key-item .pct { font-size: 15.5px; }
+.split-key-item .pct { font-size: 16.5px; }
 
 /* MEI e microempresa somam 95% do setor: a legenda deles pesa mais */
-.split-key-item.principal { font-size: 18px; }
-.split-key-item.principal .pct { font-size: 17px; font-weight: 600; color: var(--body); }
+.split-key-item.principal { font-size: 19px; }
+.split-key-item.principal .pct { font-size: 18px; font-weight: 600; color: var(--body); }
 .split-key-item.principal .swatch { width: 14px; height: 14px; margin-top: 6px; }
 .swatch { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; margin-top: 5px; }
 
 @media (max-width: 560px) {
   .split-key { grid-template-columns: 1fr; }
-  .split-seg { font-size: 16px; padding: 8px; }
+  .split-seg { font-size: 17.5px; padding: 8px; }
 }
