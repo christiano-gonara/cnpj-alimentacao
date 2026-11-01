@@ -29,9 +29,25 @@
 .rank .bar b { display: block; height: 100%; border-radius: 8px; background: var(--basil-mid); }
 .rank li:first-child .bar b { background: var(--basil); }
 
+/* Ranking principal (poucas linhas num cartão alto): barras e textos grandes ocupam a altura
+   em vez de deixar vão entre as linhas */
+.rank:not(.compacto) li { grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px 14px; }
+.rank:not(.compacto) .pos { font-size: 20px; }
+.rank:not(.compacto) .name { font-size: 20px; }
+.rank:not(.compacto) .val { font-size: 24px; }
+.rank:not(.compacto) .bar { height: 34px; border-radius: 10px; }
+.rank:not(.compacto) .bar b { border-radius: 10px; }
+
 /* Lista longa (uma linha por ano): mesma leitura, menos altura */
 .rank.compacto li { padding: 9px 0; gap: 6px 12px; }
 .rank.compacto .bar { height: 14px; }
+
+@media (max-width: 560px) {
+  .rank:not(.compacto) li { grid-template-columns: 28px minmax(0, 1fr) auto; }
+  .rank:not(.compacto) .name { font-size: 17px; }
+  .rank:not(.compacto) .val { font-size: 20px; }
+  .rank:not(.compacto) .bar { height: 26px; }
+}
 
 /* Sem coluna de posição, quando a ordem é a do tempo e não a de tamanho */
 .rank.sem-numero li { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name val" "bar bar"; }
