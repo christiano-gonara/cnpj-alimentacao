@@ -76,7 +76,7 @@ function configuracao(anos, valores) {
           ctx.fillStyle = d.corRotulo[i];
           ctx.fillText(fmtRotulo(valores[i]), ponto.x, y);
           if (d.notas[i]) {
-            ctx.font = "600 14.5px 'Figtree', sans-serif";
+            ctx.font = "600 15.5px 'Figtree', sans-serif";
             ctx.fillStyle = NOTA;
             ctx.fillText(d.notas[i], ponto.x, d.abaixo[i] ? y + 20 : y - 22);
           }
@@ -107,7 +107,7 @@ function configuracao(anos, valores) {
           offset: true,
           grid: { display: false },
           border: { display: false },
-          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15, weight: '700' }, color: TEXTO },
+          ticks: { font: { family: "'Funnel Display', sans-serif", size: 15.5, weight: '700' }, color: TEXTO },
         },
         // Folga embaixo para os rótulos que ficam sob a linha
         y: { display: false, min: Math.max(0, menor - folga * 0.8), max: maior + folga * 0.25 },

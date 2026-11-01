@@ -24,7 +24,7 @@
 
 .split-key { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
 
-.split-key-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink); }
+.split-key-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15.5px; color: var(--ink); }
 .split-key-item strong { display: block; font-weight: 700; }
 .split-key-item .pct { font-size: 15.5px; }
 
@@ -36,5 +36,5 @@
 
 @media (max-width: 560px) {
   .split-key { grid-template-columns: 1fr; }
-  .split-seg { font-size: 16px; padding: 8px; }
+  .split-seg { font-size: 16.5px; padding: 8px; }
 }

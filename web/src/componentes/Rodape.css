@@ -11,7 +11,7 @@ footer { border-top: 1px solid var(--line); padding: 40px 0 48px; font-size: 14p
 .footer-grid .brand-text strong { font-size: 17px; }
 .footer-grid p { margin-top: 4px; }
 
-.footer-label { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.footer-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .footer-name { font-weight: 700; color: var(--ink); }
 
 .footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
