@@ -29,4 +29,4 @@ a:focus-visible, button:focus-visible {
 }
 
 /* Legenda e valores pequenos, usados em mais de um gráfico */
-.pct { font-size: 14px; font-weight: 500; color: var(--muted); }
+.pct { font-size: 15px; font-weight: 500; color: var(--muted); }
