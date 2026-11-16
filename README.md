@@ -40,6 +40,7 @@ Análise nacional do setor de bares, restaurantes e alimentação fora do lar, u
 - [`web/`](web): dashboard em React + Vite, publicado no GitHub Pages. `src/secoes/` tem os blocos da página, `src/componentes/` as peças reaproveitáveis (cada uma com seu CSS ao lado) e `src/estilos/` as camadas globais (tokens, base, layout).
 - [`scripts/`](scripts): pipeline de dados. `01_ingestao.py` converte os arquivos da Receita, `02_tratamento.py` limpa, junta e gera a base do setor, `03_base_api.py` gera a versão enxuta que a API consulta, `04_painel_web.py` grava o painel nacional que o dashboard mostra sem esperar a API.
 - [`api/`](api): API em FastAPI, em camadas (rotas, serviço, repositório).
+- [`docs/arquitetura.md`](docs/arquitetura.md): o caminho do dado (scripts) e o da visita (dashboard + API) em dois diagramas.
 - [`tests/`](tests): testes da API sobre uma base pequena com números conhecidos.
 - [`dados/amostra/amostra_base_afl.csv`](dados/amostra/amostra_base_afl.csv): amostra pública com 20 mil linhas.
 - [Release](https://github.com/christiano-gonara/cnpj-alimentacao/releases/latest): base nacional completa em Parquet.
