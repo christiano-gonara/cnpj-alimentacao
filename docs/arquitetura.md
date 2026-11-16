@@ -34,7 +34,7 @@ flowchart LR
 | `03_base_api.py` | `base_afl.parquet` | `base_api.parquet`, só com colunas de agregado |
 | `04_painel_web.py` | `base_api.parquet`, pelo serviço da API | `painel-nacional.json` |
 
-O `01` só converte: nada de regra de negócio, e um Parquet por parte para poder retomar de onde parou. O `02` é onde as regras moram: junta Estabelecimentos com Empresas, com o Simples (é de lá que sai o MEI) e com os domínios (para trocar código por nome), e filtra os 6 CNAEs do setor. O `03` deixa de fora razão social, logradouro, CEP e CNPJ completo, porque a API só devolve agregado.
+O `01` só converte: nada de regra de negócio, e um Parquet por parte para poder retomar de onde parou. O `02` é onde as regras moram. Ele junta Estabelecimentos com Empresas, com o Simples (é de lá que sai o MEI) e com os domínios (para trocar código por nome). Depois filtra os 6 CNAEs do setor. O `03` deixa de fora razão social, logradouro, CEP e CNPJ completo, porque a API só devolve agregado.
 
 ## 2. O caminho de quem visita
 
@@ -48,9 +48,9 @@ flowchart LR
     D --> T
 ```
 
-Sem filtro, o dashboard abre o JSON que veio no build: nenhuma requisição, e a página aparece mesmo com o servidor dormindo. Os números são os mesmos que a API devolveria, porque esse JSON é gerado pelo serviço da própria API.
+Sem filtro, o dashboard abre o JSON que veio no build: nenhuma requisição, e a página aparece mesmo com o servidor dormindo. Os números são os mesmos que a API devolveria, porque esse JSON é gerado pelo mesmo código que responde às consultas.
 
-Com filtro, o dashboard consulta a API, que responde lendo `base_api.parquet` com DuckDB (350 MB de limite de memória, por causa do plano grátis). A API dorme quando fica parada: passados 4 segundos sem resposta, a página avisa que a primeira consulta pode demorar; se falhar, mostra o erro com o botão de tentar de novo.
+Com filtro, o dashboard consulta a API. A API responde lendo `base_api.parquet` com DuckDB, limitado a 350 MB de memória por causa do plano grátis. E ela dorme quando fica parada: passados 4 segundos sem resposta, a página avisa que a primeira consulta pode demorar. Se a chamada falhar, aparece o erro e um botão para tentar de novo.
 
 ## Dois detalhes que explicam o deploy
 
