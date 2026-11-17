@@ -217,4 +217,6 @@
 @media (max-width: 560px) {
   .hero-lede { font-size: 18px; }
   .hero-destaques { grid-template-columns: minmax(0, 1fr); }
+  /* Os pontinhos decorativos passavam 40px para fora e ficavam cortados na borda. */
+  .hero-visual::before { inset: -24px -12px; }
 }

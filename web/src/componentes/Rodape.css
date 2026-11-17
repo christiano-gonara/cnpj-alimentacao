@@ -33,7 +33,7 @@ footer { border-top: 1px solid var(--line); padding: 40px 0 48px; font-size: 15p
 .footer-link svg { width: 16px; height: 16px; }
 .footer-link:hover { background: var(--basil-soft); border-color: var(--basil-mid); }
 
-.footer-top { font-weight: 700; color: var(--body); text-underline-offset: 3px; }
+.footer-top { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--body); text-underline-offset: 3px; }
 .footer-top:hover { color: var(--basil-deep); }
 
 @media (max-width: 760px) {

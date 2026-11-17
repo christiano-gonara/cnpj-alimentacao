@@ -110,7 +110,9 @@
 
 .chart-card h3 + p { margin-top: 6px; font-size: 16.5px; color: var(--muted); }
 
-.chart-box { position: relative; min-height: 300px; flex: 1 1 auto; }
+.chart-box { position: relative; min-height: 300px; flex: 1 1 auto; width: 100%; min-width: 0; }
+/* O canvas nasce com 300px fixos do Chart.js; sem isto ele passa da tela em celular pequeno. */
+.chart-box canvas { max-width: 100%; }
 
 @media (max-width: 560px) {
   .card, .chart-card { padding: 22px 20px; border-radius: var(--radius-lg); }
