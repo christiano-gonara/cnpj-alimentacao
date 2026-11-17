@@ -25,6 +25,13 @@ flowchart LR
     A --> API[("dados/api/base_api.parquet")]
     API --> P["04_painel_web"]
     P --> J[("web/src/dados/painel-nacional.json")]
+
+    classDef bruto fill:#e3ecff,stroke:#4a6fa5,color:#16233a
+    classDef script fill:#f1f1f4,stroke:#8a8a93,color:#22242a
+    classDef arquivo fill:#e2f0e2,stroke:#4f7d4f,color:#16240f
+    class E,M,S,D bruto
+    class I,A,T,P script
+    class INT,B,C,API,J arquivo
 ```
 
 | Script | O que lê | O que grava |
@@ -46,6 +53,13 @@ flowchart LR
     A --> D[("DuckDB<br/>base_api.parquet")]
     J --> T["os números na tela"]
     D --> T
+
+    classDef neutro fill:#f1f1f4,stroke:#8a8a93,color:#22242a
+    classDef direto fill:#e2f0e2,stroke:#4f7d4f,color:#16240f
+    classDef api fill:#e3ecff,stroke:#4a6fa5,color:#16233a
+    class V,W,T neutro
+    class J direto
+    class A,D api
 ```
 
 Sem filtro, o dashboard abre o JSON que veio no build: nenhuma requisição, e a página aparece mesmo com o servidor dormindo. Os números são os mesmos que a API devolveria, porque esse JSON é gerado pelo mesmo código que responde às consultas.
